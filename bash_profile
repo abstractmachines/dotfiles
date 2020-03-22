@@ -48,7 +48,35 @@ alias gl="git log"
 alias gs="git status"
 
 
+
+# ***** ***** Kubernetes ***** *****
+
+alias k8s="kubectl"
+alias k-conf="kubectl config"
+alias k-context="kubectl config current-context"
+alias k-context-dev="kubectl config use-context clusterboi"
+
+# ~/dev/resources/resources_scripts/scripts in $PATH
+# kpods does something like:
+alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
+alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
+
+# How much headroom does a namespace haz?
+alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota -n namespaceboi"
+# (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
+# Also see resource profiles for your system.
+
+# Minikube
+alias mk="minikube"
+alias mkh="minikube -help"
+alias mks="minikube start"
+# If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+
 # ***** ***** Installing ESLint + Prettier in JS projects (VSCode IDE) ***** *****
+
 # 1. Install ESLint && Prettier VSCode Extensions
 # 2. CMD , -> Preferences -> set things up and stuff using search
 # 3. Install this locally in your repo if you want as dev dependencies:
@@ -76,33 +104,6 @@ alias gs="git status"
 # Note that you may need to edit VSCode .editorconfig and integrate.
 # See info here: https://prettier.io/docs/en/integrating-with-linters.html
 # See also: https://github.com/prettier/prettier-vscode#linter-integration
-
-
-
-# ***** ***** Kubernetes ***** *****
-
-alias k8s="kubectl"
-alias k-conf="kubectl config"
-alias k-context="kubectl config current-context"
-alias k-context-dev="kubectl config use-context clusterboi"
-
-# ~/dev/resources/resources_scripts/scripts in $PATH
-# kpods does something like:
-alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
-alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
-
-# How much headroom does a namespace haz?
-alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota -n namespaceboi"
-# (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
-# Also see resource profiles for your system.
-
-# Minikube
-alias mk="minikube"
-alias mkh="minikube -help"
-alias mks="minikube start"
-# If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 
 
