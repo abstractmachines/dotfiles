@@ -1,0 +1,28 @@
+# This is Git's per-user configuration file.
+# It's generally in /Users/yourusername/.gitconfig
+[user]
+# Please adapt and uncomment the following lines:
+	name = github-username
+	email = github-username@domain.com
+
+# My personal synthwave-oriented OSX Terminal color settings in homebrew mode:
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = yellow
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = cyan bold
+
+[color "status"]
+  added = magenta bold
+  changed = cyan bold
+  untracked = green bold
