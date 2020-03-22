@@ -67,9 +67,9 @@ alias gs="git status"
 # Choose Airbnb style
 # 6. After ESLint generates the file, make it so that .eslint.rc.json only has:
 #{
-#  "extends": ["airbnb", "prettier"],
+#  "extends": ["airbnb", "prettier"],  // or "plugin:prettier/recommended"
 #  "plugins": ["prettier"],
-#  "rules": {}
+#  "rules": {} // or "rules": { "prettier/prettier": "error" }
 #}
 # ... Now your files should work just fine for standard linting.
 # More on integration here: https://prettier.io/docs/en/integrating-with-linters.html
