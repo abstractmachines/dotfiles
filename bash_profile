@@ -93,11 +93,17 @@ alias mks="minikube start"
 # For ES6/React/Vue projects, choose JavaScript import/export
 # For Node projects, choose CommonJS require/export
 # Choose Airbnb style
-# 6. After ESLint generates the file, make it so that .eslint.rc.json only has:
+# 6. After ESLint generates the file, make it so that .eslint.rc.json only has
+#   the following (so you can use Prettier and ESLint together!):
+#   ... the following example has just a couple rules.
 #{
-#  "extends": ["airbnb", "prettier"],  // or "plugin:prettier/recommended"
+#  "extends": ["airbnb", "prettier"],
 #  "plugins": ["prettier"],
-#  "rules": {} // or "rules": { "prettier/prettier": "error" }
+#  "rules": {
+#    "prettier/prettier": "error",
+#    "no-unused-vars": "warn",
+#    "no-console": "error"
+#  }
 #}
 # ... Now your files should work just fine for standard linting.
 # More on integration here: https://prettier.io/docs/en/integrating-with-linters.html
