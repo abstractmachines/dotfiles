@@ -1,6 +1,6 @@
 # ***** ^_^ bash profile, mostly for OSX but somewhat agnostic. ^_^ *****
 #
-# git, Kubernetes, Node, nvm, CLI snacks
+# git, Kubernetes, Node, nvm, CLI snacks, scala java, and some lite db
 # -> Dependencies: homebrew pkg mgr; nvm-installed-and-managed versions of Node.
 # -> This is an abstracted file that I also use as a memory recall for working.
 
@@ -65,6 +65,37 @@ alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi
 alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota -n namespaceboi"
 # (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
 # Also see resource profiles for your system.
+
+# Minikube
+alias mk="minikube"
+alias mkh="minikube -help"
+alias mks="minikube start"
+# If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+
+
+# ***** for scala projects, you need this stuff ***** *****
+
+# JAVA
+# install FAQ: https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_install_faq.html#CHDJEDDB
+
+# JRE
+alias jre-version="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -version"
+# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jre.html#A1096856
+
+# JDK
+alias jdk-version="java -version"
+# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html
+
+# ** Other aliases for Java stuff **
+# Java Compiler Manpage:
+# > man javac
+# Java Home Manpage:
+# > man java_home
+# Java Application Launcher Manpage:
+# > man java
 
 
 
