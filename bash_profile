@@ -73,6 +73,9 @@ alias gs="git status"
 #}
 # ... Now your files should work just fine for standard linting.
 # More on integration here: https://prettier.io/docs/en/integrating-with-linters.html
+# Note that you may need to edit VSCode .editorconfig and integrate.
+# See info here: https://prettier.io/docs/en/integrating-with-linters.html
+# See also: https://github.com/prettier/prettier-vscode#linter-integration
 
 
 
