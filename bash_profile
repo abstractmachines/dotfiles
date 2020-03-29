@@ -11,7 +11,9 @@
 # see .gitconfig in home dir for git colors ...
 
 # The -G option is equivalent to defining CLICOLOR in the environment.
-alias ls="ls -G"
+# the -h makes it human readable, and -F shows / after dir and @ after executable.
+alias ls="ls -GFh"
+
 
 
 # ***** ***** Node ***** *****
@@ -38,13 +40,27 @@ source /usr/local/etc/bash_completion
 # git branch (show on command line prompt) :
 export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 
-# You can also use this instead:
-# Git branch in prompt.
-#parse_git_branch() {
+# ***** Shell Prompt stuff, git bash completion
+# You can also use this instead: Git branch in prompt.
+# source ~/git-completion.bash
+# export PATH="/usr/local/sbin:$PATH"
+# parse_git_branch() {
 #  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-#}
+# }
 #
-#export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+# export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# To see your current prompt: echo $PS1
+# By default the command prompt is set to [\u@\h \W]\$. username, host, workingdir, UID.
+# Before you modify settings save your old prompt using the following command:
+# oldps1="$PS1"
+# So if you messed up, you can switch back easily using the following syntax:
+# PS1="$oldps1"
+# Use the export command to setup a new shell prompt:
+# $ export PS1="[\\u@\\H \\W \\@]\\$ "
+# To add colors:
+# \e[ : Start color scheme. x;y : Color pair to use (x;y)  $PS1 : Your shell prompt variable. \e[m : Stop color scheme.
+# cyan: 36, blue: 34, green: 32, purple: 35, red: 31, etc. 0;31 versus 31 versus 031.
 
 # Aliases :
 alias ga="git add"
