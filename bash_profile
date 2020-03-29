@@ -6,6 +6,14 @@
 
 
 
+# ***** ***** Terminal ***** *****
+
+# see .gitconfig in home dir for git colors ...
+
+# The -G option is equivalent to defining CLICOLOR in the environment.
+alias ls="ls -G"
+
+
 # ***** ***** Node ***** *****
 
 # Load NVM with each new Terminal window :
@@ -16,7 +24,7 @@ export NVM_DIR="$HOME/.nvm"
 # use particular version of Node e.g. 10.15.3 :
 nvm use 10
 
-
+alias rimraff='rm -rf node_modules/ && npm i'
 
 # ***** ***** git ***** *****
 
