@@ -74,6 +74,7 @@ alias gs="git status"
 
 
 # ***** ***** Kubernetes ***** *****
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 # Viewing and finding resources
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
@@ -83,7 +84,8 @@ alias k-context="kubectl config current-context"
 alias k-context-dev="kubectl config use-context clusterboi"
 # Get pods, e.g. kubectl get pods ...
 # the -o wide opt args help us get more information,
-# and of course it's always good to know the git tags and helm chart versions:
+# and of course it's always good to know the git tags and helm chart versions.
+# To do this, we use labels. https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
 alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
 
