@@ -75,13 +75,15 @@ alias gs="git status"
 
 # ***** ***** Kubernetes ***** *****
 
+# Viewing and finding resources
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
 alias k8s="kubectl"
 alias k-conf="kubectl config"
 alias k-context="kubectl config current-context"
 alias k-context-dev="kubectl config use-context clusterboi"
-
-# ~/dev/resources/resources_scripts/scripts in $PATH
-# kpods does something like:
+# Get pods, e.g. kubectl get pods ...
+# the -o wide opt args help us get more information,
+# and of course it's always good to know the git tags and helm chart versions:
 alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
 alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
 
