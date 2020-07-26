@@ -1,5 +1,7 @@
 # dotfiles
 
+![A test image](./img/screenfetch-dotfiles.png)
+
 This is a fairly abstracted collection of dotfiles that I tend to use as a reference
 point for setup on a new machine.
 
