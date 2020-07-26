@@ -5,14 +5,14 @@
 	name = github-username
 	email = github-username@domain.com
 
-# My personal synthwave-oriented OSX Terminal color settings in homebrew mode:
+# Terminal settings for kitteh mode:
 [color]
   branch = auto
   diff = auto
   status = auto
 
 [color "branch"]
-  current = yellow reverse
+  current = magenta
   local = yellow
   remote = yellow
 
@@ -23,6 +23,6 @@
   new = cyan bold
 
 [color "status"]
-  added = magenta bold
-  changed = cyan bold
-  untracked = green bold
+  added = yellow bold
+  changed = magenta bold
+  untracked = cyan bold
