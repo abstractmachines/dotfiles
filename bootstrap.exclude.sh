@@ -20,3 +20,4 @@ symlinx () {
 init
 symlinx
 # brewinstall
+# etc
