@@ -1,3 +1,8 @@
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# echo "nvm use 10";
+
 # ***** ^_^ bash profile, mostly for OSX but somewhat agnostic. ^_^ *****
 #
 # git, Kubernetes, Node, nvm, ESLinting in EDI, CLI snacks, scala java, and some lite db
@@ -6,14 +11,8 @@
 
 
 
-# ***** ***** Terminal ***** *****
-
+# ***** ***** Colors ***** *****
 # see .gitconfig in home dir for git colors ...
-
-# The -G option is equivalent to defining CLICOLOR in the environment.
-# the -h makes it human readable, and -F shows / after dir and @ after executable.
-alias ls="ls -GFh"
-
 
 
 # ***** ***** Node ***** *****
@@ -26,30 +25,32 @@ export NVM_DIR="$HOME/.nvm"
 # use particular version of Node e.g. 10.15.3 :
 nvm use 10
 
-alias rimraff='rm -rf node_modules/ && npm i'
-
 # ***** ***** git ***** *****
 
-# bash completion :
+# git bash completion:
 # Make sure to install first: $ brew install git bash-completion
 # or put the same file in your HOME dir and PATH.
 #[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# source /usr/local/etc/bash_completion
 
-source /usr/local/etc/bash_completion
-
-# git branch (show on command line prompt) :
+# # git branch completion :
 export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 
-# ***** Shell Prompt stuff, git bash completion
-# You can also use this instead: Git branch in prompt.
-# source ~/git-completion.bash
-# export PATH="/usr/local/sbin:$PATH"
-# parse_git_branch() {
-#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-# }
-#
+# You can also use this instead:
+source ~/git-completion.bash
+export PATH="/usr/local/sbin:$PATH"
+
+# Git branch in prompt.
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+export PATH="/usr/local/sbin:/Users/carebearstare/.nvm/versions/node/v10.15.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# ***** Colors
+# changes the bash prompt to be colorized, and rearranges the prompt such as “username@hostname:cwd $”
 # export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
-# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] $ "
 # To see your current prompt: echo $PS1
 # By default the command prompt is set to [\u@\h \W]\$. username, host, workingdir, UID.
 # Before you modify settings save your old prompt using the following command:
@@ -62,7 +63,7 @@ export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 # \e[ : Start color scheme. x;y : Color pair to use (x;y)  $PS1 : Your shell prompt variable. \e[m : Stop color scheme.
 # cyan: 36, blue: 34, green: 32, purple: 35, red: 31, etc. 0;31 versus 31 versus 031.
 
-# Aliases :
+# ***** ***** Aliases ***** *****
 alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m"
@@ -70,22 +71,19 @@ alias gco="git checkout"
 alias gd="git diff"
 alias gl="git log"
 alias gs="git status"
-
-
+alias npmnuke="rm -rf node_modules/ && npm i"
+# The -G option is equivalent to defining CLICOLOR in the environment.
+# the -h makes it human readable, and -F shows / after dir and @ after executable.
+alias ls="ls -GFh"
 
 # ***** ***** Kubernetes ***** *****
-# https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-
-# Viewing and finding resources
-# https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
 alias k8s="kubectl"
 alias k-conf="kubectl config"
 alias k-context="kubectl config current-context"
 alias k-context-dev="kubectl config use-context clusterboi"
-# Get pods, e.g. kubectl get pods ...
-# the -o wide opt args help us get more information,
-# and of course it's always good to know the git tags and helm chart versions.
-# To do this, we use labels. https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+
+# ~/dev/resources/resources_scripts/scripts in $PATH
+# kpods does something like:
 alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
 alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
 
@@ -99,8 +97,8 @@ alias mk="minikube"
 alias mkh="minikube -help"
 alias mks="minikube start"
 # If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 
 # ***** ***** Installing ESLint + Prettier in JS projects (VSCode IDE) ***** *****
@@ -113,7 +111,7 @@ alias mks="minikube start"
 # > npx install-peerdeps --dev eslint-config-airbnb
 # 5. create config files in VSCode as run command files.
 # 5a. Prettier: at project root, create .prettierrc and add in rules as JSON objects.
-# 5b. ESLint: You can either manually create .eslint.rc.json or similar (reliant on 
+# 5b. ESLint: You can either manually create .eslint.rc.json or similar (reliant on
 # several params such as your babel config and stuffs), or install ESLint globally
 # and have the global install then generate your file:
 # > sudo npm install -g eslint
@@ -124,7 +122,7 @@ alias mks="minikube start"
 # 6. After ESLint generates the file, make it so that .eslint.rc.json only has
 #   the following (so you can use Prettier and ESLint together!):
 #   ... the following example has just a couple rules.
-#{
+# {
 #  "extends": ["airbnb", "prettier"],
 #  "plugins": ["prettier"],
 #  "rules": {
@@ -175,6 +173,7 @@ alias mysql-login2="mysql -u fakeuser -h mysql.domain.com -p fake-auth"
 # > describe tableName; // schemas, structure.
 # > select user, host, authentication_string from mysql.user; // later versions of mysql...
 # > $ mysql --host=localhost DBNAME --port=0000 --user=fakeuser --password=fake-auth
+# > mysql.server start # .stop startup ... auto launch w launchctl
 
 # postgres
 # start:
