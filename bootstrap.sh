@@ -2,24 +2,7 @@
 
 PROMPT='abstractmachines-bootstrap'
 
-init () {
-
-    echo "$PROMPT Let's bootstrap your machine."
-}
-
-getInp () {
-    read inp
-
-    if [ "$inp" = 'y' -o "$inp" = 'Y' ] ; then
-        return
-    else
-        echo "it was false."
-    fi
-
-    return 1
-}
-
-oops () {
+hi () {
     echo "
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 ##??????????????????  ;;;;  ?????##  ::  ;;;;  :::::
@@ -32,8 +15,13 @@ oops () {
 ####??????()??????  ;;[];;;;;;;;;;;;;;;;;;;;;[]  :::
 ######?????????????  ;;;;;; \/\/\/\/\/\/ ;;;;  :::::
 ######?????????????  ;;;;;; _/\/\/\/\/\_ ;;;;  :::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::"
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+\n"
+}
 
+init () {
+    hi
+    echo "$PROMPT Let's bootstrap your machine."
 }
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
@@ -46,8 +34,7 @@ symlinx () {
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
 
     else
-        echo "\n\n* no action taken *\n\n...Or something went wrong during symlinx().\n\n"
-        oops
+        echo "\n* no action taken ...Or something went wrong during symlinx(). *"
     fi
 }
 
