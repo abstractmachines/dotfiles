@@ -1,4 +1,4 @@
-# abstractmachines' dotfiles
+# abstractmachines' dotfiles (Mac)
 
 ![Screenfetch](./img/screenfetch-dotfiles.png)
 
@@ -18,6 +18,10 @@ this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Ho
 4. Tell your shell to recognize the changes to your environment, by [sourcing 
 your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line) with `source ~/.bash_profile`.
 
+## About these scripts
+
+Notice that the bootstrap script has a few functions; the bootstrap script 
+installs basic software to run your Mac. 
 
 # TODO list
 - [ ] Run basic shell script / notes
