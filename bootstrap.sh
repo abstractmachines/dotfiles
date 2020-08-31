@@ -30,6 +30,7 @@ init () {
 
 noAction () {
     echo " * No action taken. *"
+    exit 0
 }
 
 # proceed: uses regex and the nature of bash (exit status of last cmd) to continue
@@ -50,15 +51,11 @@ proceed () {
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
 symlinx () {
-    echo "$PROMPT \n\n ** Symlinking your dotfiles repo to your user directory. ** \n\n Proceed? (y/n)"
-    read inp
-    if [ "$inp" = 'y' -o "$inp" = 'Y' ] ; then
+    echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory. **"
 
-        echo "\n\n** Bootstrap script now symlinking this repo's bashprofile file, to your home dir's bash profile **\n\n"
+    if proceed; then
+        echo "\n\n ** Script now symlinking this repo's bashprofile file, to home dir **\n\n"
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
-
-    else
-        noAction
     fi
 }
 
@@ -69,13 +66,15 @@ symlinx () {
 # the darwin OS.
 brewinstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
-        echo "Using OSX, and installing homebrew package manager. \n\n Continue? Y/N."
-        read inp
-        if [ "$inp" = 'y' -o "$inp" = 'Y' ] ; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
+
+        if proceed; then
+            # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+            sh brew.sh
         fi
     else
-        echo " * You're not on Mac/OSX. * "
+        echo " ** You're not on Mac/OSX. You'll have to use different dotfiles (for now). ** "
+        noAction
     fi
 }
 
