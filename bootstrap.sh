@@ -32,16 +32,14 @@ noAction () {
     echo " * No action taken. *"
 }
 
-# proceed
+# proceed: uses regex and the nature of bash (exit status of last cmd) to continue
 # ($?) Expands to the exit status of the most recently executed foreground pipeline:  
 # https://www.gnu.org/software/bash/manual/bash.html#index-_0024_003f
 # re: https://stackoverflow.com/questions/5431909/returning-a-boolean-from-a-bash-function
 proceed () {
     echo "\n** Proceed? (y/n) **"
     read yOrN
-    [[ $yOrN =~ [y|Y] ]]
-    status=$? # 
-    if [[ $status =~ 0 ]]; then # works great, but 0
+    if [[ $yOrN =~ [y|Y] ]]; then
         return
     else 
         noAction
@@ -49,8 +47,6 @@ proceed () {
 
     false
 }
-
-
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
 symlinx () {
@@ -66,7 +62,7 @@ symlinx () {
     fi
 }
 
-# `brewinstall()` sniffs out what operating system the computer has (the Mac 
+# brewinstall: sniffs out what operating system the computer has (the Mac 
 # OSX OS is a Unix-like OS called [Darwin](https://en.wikipedia.org/wiki/Darwin_(operating_system)) 
 # that's *mostly* POSIX-compliant.) The script checks if output _exists_ from 
 # printing out the operating system and [grepping for](https://man7.org/linux/man-pages/man1/grep.1.html)
@@ -84,6 +80,4 @@ brewinstall () {
 }
 
 init
-# symlinx
-# brewinstall
-# etc
+brewinstall
