@@ -17,6 +17,8 @@ hi () {
 ######?????????????  ;;;;;; _/\/\/\/\/\_ ;;;;  :::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 \n"
+
+return
 }
 
 init () {
@@ -26,11 +28,13 @@ init () {
     if proceed; then
         symlinx
     fi
+
+    return
 }
 
 noAction () {
     echo " * No action taken. *"
-    exit 0
+    exit 1
 }
 
 # proceed: uses regex and the nature of bash (exit status of last cmd) to continue
@@ -57,6 +61,8 @@ symlinx () {
         echo "\n\n ** Script now symlinking this repo's bashprofile file, to home dir **\n\n"
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
     fi
+
+    return
 }
 
 # brewinstall: sniffs out what operating system the computer has (the Mac 
@@ -76,6 +82,8 @@ brewinstall () {
         echo " ** You're not on Mac/OSX. You'll have to use different dotfiles (for now). ** "
         noAction
     fi
+
+    return
 }
 
 init
