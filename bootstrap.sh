@@ -32,15 +32,20 @@ noAction () {
     echo " * No action taken. *"
 }
 
+# proceed
+# ($?) Expands to the exit status of the most recently executed foreground pipeline:  
+# https://www.gnu.org/software/bash/manual/bash.html#index-_0024_003f
+# re: https://stackoverflow.com/questions/5431909/returning-a-boolean-from-a-bash-function
 proceed () {
     echo "\n** Proceed? (y/n) **"
     read yOrN
-    if [ "$yOrN" = 'y' -o "$yOrN" = 'Y' ] ; then
+    [[ $yOrN =~ [y|Y] ]]
+    status=$? # 
+    if [[ $status =~ 0 ]]; then # works great, but 0
         return
     else 
         noAction
     fi
-    # if [[ ""]]
 
     false
 }
