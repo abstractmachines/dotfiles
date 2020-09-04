@@ -37,10 +37,6 @@ noAction () {
     exit 1
 }
 
-# proceed: uses regex and the nature of bash (exit status of last cmd) to continue
-# ($?) Expands to the exit status of the most recently executed foreground pipeline:  
-# https://www.gnu.org/software/bash/manual/bash.html#index-_0024_003f
-# re: https://stackoverflow.com/questions/5431909/returning-a-boolean-from-a-bash-function
 proceed () {
     echo "\n** Proceed? (y/n) **"
     read yOrN

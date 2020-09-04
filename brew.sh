@@ -23,6 +23,7 @@ brewFresh () {
   echo "Let's make fresh brew! Running upgrades ..."
   brew update
   brew upgrade
+  brew install coreutils
 
   return
 }
