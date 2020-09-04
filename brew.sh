@@ -39,6 +39,7 @@ brewDarwin () {
   brew install node
   brew install nvm # Source it 
   brew install python
+  brew install screenfetch
   brew install tmux
   brew install tree
 }
