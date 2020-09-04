@@ -1,0 +1,14 @@
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# echo "nvm use 10";
+
+# ***** ***** Node ***** *****
+
+# Load NVM with each new Terminal window :
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # loads nvm bash_completion
+
+# use particular version of Node e.g. 10.15.3 :
+nvm use 10

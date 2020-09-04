@@ -1,0 +1,68 @@
+
+# ***** ***** Aliases ***** *****
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gd="git diff"
+alias gl="git log"
+alias gs="git status"
+alias npmnuke="rm -rf node_modules/ && npm i"
+# The -G option is equivalent to defining CLICOLOR in the environment.
+# the -h makes it human readable, and -F shows / after dir and @ after executable.
+alias ls="ls -GFh"
+
+# ***** ***** Kubernetes ***** *****
+alias k8s="kubectl"
+alias k-conf="kubectl config"
+alias k-context="kubectl config current-context"
+alias k-context-dev="kubectl config use-context clusterboi"
+
+# ~/dev/resources/resources_scripts/scripts in $PATH
+# kpods does something like:
+alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
+alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
+
+# How much headroom does a namespace haz?
+alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota -n namespaceboi"
+# (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
+# Also see resource profiles for your system.
+
+# Minikube
+alias mk="minikube"
+alias mkh="minikube -help"
+alias mks="minikube start"
+# If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+
+
+# JAVA
+# install FAQ: https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_install_faq.html#CHDJEDDB
+# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jre.html#A1096856
+# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html
+alias jre-version="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -version"
+alias jdk-version="java -version"
+# > man javac
+# > man java_home
+# > man java
+
+# MySQL
+alias mysql-login="mysql --host=localhost --port=0000 --user=fakeuser --password=fake-auth"
+alias mysql-login2="mysql -u fakeuser -h mysql.domain.com -p fake-auth"
+# > show databases;
+# > show tables;
+# > desc user; // schemas, structure.
+# > describe tableName; // schemas, structure.
+# > select user, host, authentication_string from mysql.user; // later versions of mysql...
+# > $ mysql --host=localhost DBNAME --port=0000 --user=fakeuser --password=fake-auth
+# > mysql.server start # .stop startup ... auto launch w launchctl
+
+# postgres
+# start:
+alias pgstart="pg_ctl -D /usr/local/var/postgres start"
+# stop:
+alias pgstop="pg_ctl -D /usr/local/var/postgres stop"
+# get into db:
+alias pgdb="psql postgres"
+
