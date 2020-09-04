@@ -25,13 +25,12 @@ installs basic software to run your Mac.
 
 # TODO list
 
-- [ ] aliases
-
 
 ## TODO List aliases
 - [ ] brew search
 
 - [ ] nvm sourcing
+- [ ] git autocomplete
 
 ## TODO after aliases
 - [ ] Actually learn fzf. https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/
