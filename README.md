@@ -24,9 +24,7 @@ Notice that the bootstrap script has a few functions; the bootstrap script
 installs basic software to run your Mac. 
 
 # TODO list
-- [ ] Screenfetch on new mac
-- [ ] Image of script running (dotfiles kitteh)
-- [ ] fzf
+
 - [ ] aliases
 
 
@@ -34,6 +32,12 @@ installs basic software to run your Mac.
 - [ ] brew search
 
 - [ ] nvm sourcing
+
+## TODO after aliases
+- [ ] Actually learn fzf. https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/
+- [ ] Set a color scheme like Ham Vocke.
+- [ ] Screenfetch on new mac
+- [ ] Image of script running (dotfiles kitteh)
 
 ## TODO Nice to have
 - [ ] brew tap stuff. like mongodb. https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew

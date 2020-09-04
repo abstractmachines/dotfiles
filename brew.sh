@@ -32,6 +32,7 @@ brewDarwin () {
   echo "\n\n\n ** Let's brew up some OSX installs! ** "
 
   brew install docker
+  brew install fzf
   brew install gdb
   brew install go
   brew install htop
