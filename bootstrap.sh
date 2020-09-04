@@ -71,11 +71,10 @@ brewinstall () {
         echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
 
         if proceed; then
-            # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
             sh brew.sh
         fi
     else
-        echo " ** You're not on Mac/OSX. You'll have to use different dotfiles (for now). ** "
+        echo " ** You're not on Mac/OSX. You'll have to use different dotfiles (for now) for package management.** "
         noAction
     fi
 
