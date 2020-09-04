@@ -24,9 +24,8 @@ Notice that the bootstrap script has a few functions; the bootstrap script
 installs basic software to run your Mac. 
 
 # TODO list
-- [ ] Skip step for scripts
-
 - [ ] Screenfetch on new mac
+- [ ] Image of script running (dotfiles kitteh)
 - [ ] fzf
 - [ ] aliases
 
@@ -35,3 +34,7 @@ installs basic software to run your Mac.
 - [ ] brew search
 
 - [ ] nvm sourcing
+
+## TODO Nice to have
+- [ ] brew tap stuff. like mongodb. https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
+- [ ] Skip step for scripts

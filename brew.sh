@@ -13,14 +13,14 @@ brewInstall () {
   fi
 
   if [[ $status =~ 1 ]]; then 
-    echo "Homebrew is not yet installed. Installing now!"
+    echo "\n ** Homebrew is not yet installed. Installing now! **"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     return
   fi
 }
 
 brewFresh () {
-  echo "Let's make fresh brew! Running upgrades ..."
+  echo "\n\n\n ** Let's make fresh brew! Running upgrades ... ** "
   brew update
   brew upgrade
   brew install coreutils
@@ -29,10 +29,26 @@ brewFresh () {
 }
 
 brewDarwin () {
-  echo "Let's brew up some OSX installs!"
+  echo "\n\n\n ** Let's brew up some OSX installs! ** "
 
-  brew install nvm
+  brew install docker
+  brew install gdb
+  brew install go
+  brew install htop
+  brew install mysql
+  brew install node
+  brew install nvm # Source it 
+  brew install python
   brew install tmux
+  brew install tree
+}
+
+# mongodb has been removed from homebrew core because its licensing changed:
+# https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
+brewMongo () {
+  brew tap mongodb/brew
+  brew install mongodb-community
+  brew services start mongodb-community
 }
 
 brewUninstall () {
@@ -44,3 +60,4 @@ brewUninstall () {
 brewInstall
 brewFresh
 brewDarwin
+brew cleanup
