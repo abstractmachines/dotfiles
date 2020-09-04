@@ -8,7 +8,7 @@ brewInstall () {
   status=$?
 
   if [[ $status =~ 0 ]]; then 
-    echo "Homebrew is already installed. Skipping."
+    echo "Homebrew is already installed."
     return
   fi
 
@@ -19,15 +19,19 @@ brewInstall () {
   fi
 }
 
-brewSetup () {
+brewFresh () {
+  echo "Let's make fresh brew! Running upgrades ..."
   brew update
   brew upgrade
-  brew install coreutils
-
-  brew install tmux
 
   return
+}
 
+brewDarwin () {
+  echo "Let's brew up some OSX installs!"
+
+  brew install nvm
+  brew install tmux
 }
 
 brewUninstall () {
@@ -37,4 +41,5 @@ brewUninstall () {
 }
 
 brewInstall
-brewSetup
+brewFresh
+brewDarwin

@@ -24,7 +24,14 @@ Notice that the bootstrap script has a few functions; the bootstrap script
 installs basic software to run your Mac. 
 
 # TODO list
-- [ ] Run basic shell script / notes
-- [ ] brew
+- [ ] Skip step for scripts
+
 - [ ] Screenfetch on new mac
-- [ ] 
+- [ ] fzf
+- [ ] aliases
+
+
+## TODO List aliases
+- [ ] brew search
+
+- [ ] nvm sourcing
