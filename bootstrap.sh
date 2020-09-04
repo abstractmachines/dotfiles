@@ -56,6 +56,7 @@ symlinx () {
 
     if proceed; then
         echo "\n\n ** Script now symlinking this repo's bashprofile file, to home dir **\n\n"
+        ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
         mkdir $HOME/cli-utils
         ln -sv "$PWD/./cli-utils/.alias" "$HOME/cli-utils/.alias"
