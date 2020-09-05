@@ -122,7 +122,6 @@ nvmInstallNodeVersions () {
 
     # nvm is a shell function, so let's source it to make it available to us:
     . ~/.nvm/nvm.sh
-    nvm --version
     nvm install $arg1
 }
 
@@ -131,44 +130,49 @@ nvmList () {
     nvm ls
 }
 
-nvmSetDefault () {
+nvmUseSetDefault () {
+    nvmList
     echo "\n\n ** Which version of Node would you like to use right now? (Use integers / whole numbers, like 10, or 9). ** "
     read nvmUse
     nvm use $nvmUse
-    # TODO if not available, install it. nvm use should have "Now using node" output. $? Or, sad path: "is not yet installed."
-    # nvmInstallNodeVersions $nvmUse
-    status=$?
-    echo "status: $status"
+    node -v
+    # status=$?
+    # if [ $status -ne 0 ]; then
+    #     echo "\n\n ** Whoops, that version isn't installed yet. Would you like to install it? **"
+    #     if proceedOrSkip; then 
+    #         nvm install $nvmUse
+    #     fi
+    # fi
 
-    echo "\n\n ** Would you like to set the default Node version with nvm? ** "
-    if proceedOrSkip; then
-        echo "\n\n ** What version should be the default? (10, 12, etc) ** "
-        read defaultNode
-        nvm alias default $defaultNode
-        return
-    fi
+    # echo "\n\n ** Would you like to set the default Node version with nvm? ** "
+    # if proceedOrSkip; then
+    #     echo "\n\n ** What version should be the default? (10, 12, etc) ** "
+    #     read setDefault
+    #     nvm alias default $setDefault
+    #     nvm use $setDefault
+    #     return
+    # fi
 
-    return
+    # return
 }
 
 nvmInstallFollowup () {
+    # nvm is a shell function, so let's source it to make it available to us:
+    . ~/.nvm/nvm.sh
+    nvmList
+
     echo "\n\n ** Now that nvm is installed, let's install Node versions with it. ** "
-        # nvm is a shell function, so let's source it to make it available to us:
-        . ~/.nvm/nvm.sh
-
     if proceedOrSkip; then
-        nvmList
-
         echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
         read nvmVersion
         nvmInstallNodeVersions $nvmVersion
-
-        nvmSetDefault
+        # TODO Version '110' not found
     else
-        nvmList
-        
         echo "\n\n Skipping install of Node."
     fi
+
+    echo "\n\n ** Let's finish our Node/nvm setup by setting default versions and what to use. **"
+    nvmUseSetDefault
 
     echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
 }
