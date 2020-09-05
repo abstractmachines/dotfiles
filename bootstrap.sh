@@ -137,16 +137,40 @@ nvmSetDefault () {
     nvm use $nvmUse
     # TODO if not available, install it. nvm use should have "Now using node" output. $? Or, sad path: "is not yet installed."
     # nvmInstallNodeVersions $nvmUse
+    status=$?
+    echo "status: $status"
 
     echo "\n\n ** Would you like to set the default Node version with nvm? ** "
     if proceedOrSkip; then
-        echo "\n\n ** What version should be the default? ** "
+        echo "\n\n ** What version should be the default? (10, 12, etc) ** "
         read defaultNode
         nvm alias default $defaultNode
         return
     fi
 
     return
+}
+
+nvmInstallFollowup () {
+    echo "\n\n ** Now that nvm is installed, let's install Node versions with it. ** "
+        # nvm is a shell function, so let's source it to make it available to us:
+        . ~/.nvm/nvm.sh
+
+    if proceedOrSkip; then
+        nvmList
+
+        echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
+        read nvmVersion
+        nvmInstallNodeVersions $nvmVersion
+
+        nvmSetDefault
+    else
+        nvmList
+        
+        echo "\n\n Skipping install of Node."
+    fi
+
+    echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
 }
 
 nvmInstall () {
@@ -159,26 +183,10 @@ nvmInstall () {
         else 
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         fi
-
-        echo "\n\n ** Let's install Node w nvm, to get started w proper nvm usage && Node version mgmt. ^_^ ** "
-        # nvm is a shell function, so let's source it to make it available to us:
-        . ~/.nvm/nvm.sh
-
-        if proceedOrSkip; then
-            nvmList
-
-            echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
-            read nvmVersion
-            nvmInstallNodeVersions $nvmVersion
-
-            nvmSetDefault
-        else
-            echo "\n\n Skipping install of Node."
-            nvmList
-        fi
-
-        echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
     fi
+
+    nvmInstallFollowup
+    return
 }
 
 # gitCompletion() : autocomplete branch names on CLI
@@ -201,4 +209,3 @@ init
 nvmInstall
 # gitCompletion
 echoExit
-
