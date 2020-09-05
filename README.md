@@ -25,20 +25,14 @@ installs basic software to run your Mac.
 
 # TODO list
 
-- [ ] aliases
-
 
 ## TODO List aliases
-- [ ] brew search
+- [ ] git autocomplete CLI
 
-- [ ] nvm sourcing
+- [ ] Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
 
-## TODO after aliases
-- [ ] Actually learn fzf. https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/
+- [ ] PATH: VSCode binary
+
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
-
-## TODO Nice to have
-- [ ] brew tap stuff. like mongodb. https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
-- [ ] Skip step for scripts

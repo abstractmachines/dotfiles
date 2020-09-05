@@ -4,7 +4,7 @@
 export PATH="/usr/local/sbin:/Users/carebearstare/.nvm/versions/node/v10.15.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 
-source ./cli-utils/.alias
+source ~/cli-utils/.alias
 
 
 # ***** Colors
@@ -23,38 +23,11 @@ source ./cli-utils/.alias
 # \e[ : Start color scheme. x;y : Color pair to use (x;y)  $PS1 : Your shell prompt variable. \e[m : Stop color scheme.
 # cyan: 36, blue: 34, green: 32, purple: 35, red: 31, etc. 0;31 versus 31 versus 031.
 
-# ***** ***** Installing ESLint + Prettier in JS projects (VSCode IDE) ***** *****
 
-# 1. Install ESLint && Prettier VSCode Extensions
-# 2. CMD , -> Preferences -> set things up and stuff using search
-# 3. Install this locally in your repo if you want as dev dependencies:
-# > npm i -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
-# 4. Use Airbnb rules. Execute the cmd/binary and also install its peer deps:
-# > npx install-peerdeps --dev eslint-config-airbnb
-# 5. create config files in VSCode as run command files.
-# 5a. Prettier: at project root, create .prettierrc and add in rules as JSON objects.
-# 5b. ESLint: You can either manually create .eslint.rc.json or similar (reliant on
-# several params such as your babel config and stuffs), or install ESLint globally
-# and have the global install then generate your file:
-# > sudo npm install -g eslint
-# > eslint --init
-# For ES6/React/Vue projects, choose JavaScript import/export
-# For Node projects, choose CommonJS require/export
-# Choose Airbnb style
-# 6. After ESLint generates the file, make it so that .eslint.rc.json only has
-#   the following (so you can use Prettier and ESLint together!):
-#   ... the following example has just a couple rules.
-# {
-#  "extends": ["airbnb", "prettier"],
-#  "plugins": ["prettier"],
-#  "rules": {
-#    "prettier/prettier": "error",
-#    "no-unused-vars": "warn",
-#    "no-console": "error"
-#  }
-#}
-# ... Now your files should work just fine for standard linting.
-# More on integration here: https://prettier.io/docs/en/integrating-with-linters.html
-# Note that you may need to edit VSCode .editorconfig and integrate.
-# See info here: https://prettier.io/docs/en/integrating-with-linters.html
-# See also: https://github.com/prettier/prettier-vscode#linter-integration
+# ***** nvm 
+# if this already exists, nvm will skip appending it on installation (see bootstrap.sh):
+# => nvm source string already in /Users/yourUser/.bash_profile
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
