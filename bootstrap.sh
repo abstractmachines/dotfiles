@@ -127,7 +127,33 @@ brewInstall () {
 
 nvmInstallNode () {
     arg1=$1
-    echo "hey, it's arg1. $arg1"
+    echo "\n\n Installing Node $arg1"
+
+    # nvm is a shell function, so let's source it to make it available to us:
+    . ~/.nvm/nvm.sh
+    nvm --version
+    nvm install $arg1
+
+    return
+}
+
+nvmInstallVersions () {
+    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
+    read nvmV1
+    nvmInstallNode $nvmV1
+
+    nvmInstallContinue
+
+    return
+}
+
+nvmInstallContinue () {
+    echo "\n\n ** Would you like to also [continue to] install (one or more) node versions, with nvm? ** "
+    if proceedOrSkip; then
+        nvmInstallVersions
+    fi
+
+    return
 }
 
 nvmInstall () {
@@ -140,30 +166,17 @@ nvmInstall () {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     fi
 
-    echo "\n\n ** Would you like to also install node versions, with nvm? ** "
-
-    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
-
-    
-    read nvmV1
-
-
-    # nvm is a shell function, so let's source it to make it available to us:
-    . ~/.nvm/nvm.sh
-    nvm --version
-    nvm install $nvmV1
-
-    echo "\n\n ** Would you like to install a second Node version as well? ** "
-    if proceedOrSkip; then
-        echo "\n\n Tell us teh version"
-        read nvmV2
-        nvm install $nvmV2
-        # all of this should be in nvmInstallNode with $arg1 as version.
-    fi
+    nvmInstallContinue
 
 }
 
-init
-brewInstall
+# mostly just to ensure scripts are fallthru but also help the user
+echoExit () {
+    echo "\n\n done"
+}
+
+# init
+# brewInstall
 nvmInstall
-nvmInstallNode junk crap # proves we are skipping over nvmInstall stuff.
+echoExit
+

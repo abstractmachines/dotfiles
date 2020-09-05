@@ -27,14 +27,17 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
-- [ ] git autocomplete CLI
+- [ ] make a functional do while loop w different functions to install nvm, then close PR.
 
-- [ ] Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
+- [ ] PR: git autocomplete CLI
 
-- [ ] symlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
+- [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
+
+- [ ] PR: ymlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
 
 - [ ] PATH: VSCode binary
 
+PR: Colors
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
