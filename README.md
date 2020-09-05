@@ -29,11 +29,10 @@ installs basic software to run your Mac.
 ## TODO List aliases
 - [ ] git autocomplete CLI
 
+- [ ] Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
+
 - [ ] PATH: VSCode binary
 
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
-
-## TODO Nice to have
-- [ ] Add a skip step, for scripts, e.g. "y/n, or hit s to skip this script."

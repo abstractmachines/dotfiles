@@ -38,6 +38,10 @@ noAction () {
     exit 1
 }
 
+fallThrough () {
+    echo " * No action taken; skipping this step! *"
+}
+
 proceed () {
     echo "\n** Proceed? (y/n) **"
     read yOrN
@@ -48,6 +52,18 @@ proceed () {
     fi
 
     false
+}
+
+proceedAndSkip () {
+     echo "\n** Proceed or Skip? ( y = proceed ... n = skip) **"
+    read yOrN
+    if [[ $yOrN =~ [y|Y] ]]; then
+        return
+    else 
+        fallThrough
+    fi
+
+    false # skip
 }
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
@@ -102,6 +118,10 @@ brewInstall () {
     return
 }
 
+nvmInstallNode () {
+    echo "hey"
+}
+
 nvmInstall () {
     echo "$PROMPT \n\n ** Installing nvm via cURL (homebrew installation is not supported) ... **"
 
@@ -111,8 +131,26 @@ nvmInstall () {
     else 
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     fi
+
+    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
+    read nvmV1
+
+    # nvm is a shell function, so let's source it to make it available to us:
+    . ~/.nvm/nvm.sh
+    nvm --version
+    nvm install $nvmV1
+
+    echo "\n\n ** Would you like to install a second Node version as well? ** "
+    if proceedAndSkip; then
+        echo "\n\n Tell us teh version"
+        read nvmV2
+        nvm install $nvmV2
+        # all of this should be in nvmInstallNode with $arg1 as version.
+    fi
+
 }
 
 # init
 # brewInstall
 nvmInstall
+# nvmInstallNode # proves we are skipping over nvmInstall stuff.
