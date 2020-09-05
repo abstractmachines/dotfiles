@@ -128,9 +128,6 @@ nvmInstallNodeVersions () {
 
 nvmList () {
     echo "\n\n ** Here are the versions of Node you have installed with nvm. ** "
-    echo "\n... Note the default version is indicated. You can use nvm use <version> to change that. ** "
-    # nvm is a shell function, so let's source it to make it available to us:
-    . ~/.nvm/nvm.sh
     nvm ls
 }
 
@@ -164,18 +161,23 @@ nvmInstall () {
         fi
 
         echo "\n\n ** Let's install Node w nvm, to get started w proper nvm usage && Node version mgmt. ^_^ ** "
+        # nvm is a shell function, so let's source it to make it available to us:
+        . ~/.nvm/nvm.sh
+
         if proceedOrSkip; then
-            echo "\n\n ** Which version of Node would you like nvm to install? (10,12, etc) ** "
+            nvmList
+
+            echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
             read nvmVersion
             nvmInstallNodeVersions $nvmVersion
+
+            nvmSetDefault
         else
-            echo "\n\n Skipping install of Node. You do need to install at least one version of Node, though."
+            echo "\n\n Skipping install of Node."
+            nvmList
         fi
 
         echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
-        
-        nvmList
-        nvmSetDefault
     fi
 }
 
@@ -194,9 +196,9 @@ echoExit () {
 }
 
 init
-symlinx
-brewInstall
+# symlinx
+# brewInstall
 nvmInstall
-gitCompletion
+# gitCompletion
 echoExit
 
