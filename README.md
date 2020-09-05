@@ -30,11 +30,13 @@ installs basic software to run your Mac.
 
 - [ ] PR: git autocomplete CLI
 
-- [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
+- [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up! ANd document it too.
 
 - [ ] PR: symlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
 
-- [ ] PATH: VSCode binary
+- [ ] PATH: VSCode binary and other PATH settings, do this automagically as well.
+
+- [ ] tmux, and tmux conf.
 
 PR: Colors
 - [ ] Set a color scheme like Ham Vocke.

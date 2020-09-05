@@ -5,6 +5,14 @@ export PATH="/usr/local/sbin:/Users/carebearstare/.nvm/versions/node/v10.15.3/bi
 
 
 source ~/cli-utils/.alias
+# source ~/cli-utils/.git-conf
+
+# doesn't work:
+# Git branch in prompt.
+# parse_git_branch() {
+#   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# parse_git_branch
 
 
 # ***** Colors

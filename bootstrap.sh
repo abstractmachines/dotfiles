@@ -63,10 +63,6 @@ init () {
     hi
     echo "$PROMPT Let's bootstrap your machine!"
 
-    if proceedOrQuit; then
-        symlinx
-    fi
-
     return
 }
 
@@ -76,11 +72,9 @@ init () {
 # Single brackets are a test command; double brackets are syntax. Mostly unary operators?
 # https://unix.stackexchange.com/questions/32210/why-does-parameter-expansion-with-spaces-without-quotes-work-inside-double-brack
 symlinx () {
-    echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory. **"
+    echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory ... **"
 
     if proceedOrQuit; then
-        echo "\n\n ** Script now symlinking dotfiles to your HOME directory. **\n\n"
-
         if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         echo "\n ... Symlinking zshrc"
             ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
@@ -167,7 +161,14 @@ nvmInstall () {
     fi
 
     nvmInstallContinue
+}
 
+gitCompletion () {
+    echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
+
+    if proceedOrSkip; then
+        curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    fi
 }
 
 # mostly just to ensure scripts are fallthru but also help the user
@@ -176,7 +177,9 @@ echoExit () {
 }
 
 init
+symlinx
 brewInstall
 nvmInstall
+gitCompletion
 echoExit
 
