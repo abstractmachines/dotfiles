@@ -117,12 +117,7 @@ brewInstall () {
 }
 
 nvmInstallNodeVersions () {
-    arg1=$1
-    echo "\n\n Installing Node $arg1"
-
-    # nvm is a shell function, so let's source it to make it available to us:
-    . ~/.nvm/nvm.sh
-    nvm install $arg1
+    nvm install $1
 }
 
 nvmList () {
