@@ -27,14 +27,13 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
-- [ ] nvm sourcing
-- [ ] git autocomplete
+- [ ] git autocomplete CLI
 
-## TODO after aliases
+- [ ] PATH: VSCode binary
+
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
 
 ## TODO Nice to have
-- [ ] brew tap stuff. like mongodb. https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
 - [ ] Add a skip step, for scripts, e.g. "y/n, or hit s to skip this script."

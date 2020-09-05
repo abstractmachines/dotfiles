@@ -38,7 +38,7 @@ brewDarwin () {
   brew install htop
   brew install mysql
   brew install node
-  brew install nvm # Source it 
+  # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
   brew install python
   brew install screenfetch
   brew install tmux

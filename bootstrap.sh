@@ -82,12 +82,12 @@ symlinx () {
     return
 }
 
-# brewinstall: sniffs out what operating system the computer has (the Mac 
+# brewInstall: sniffs out what operating system the computer has (the Mac 
 # OSX OS is a Unix-like OS called [Darwin](https://en.wikipedia.org/wiki/Darwin_(operating_system)) 
 # that's *mostly* POSIX-compliant.) The script checks if output _exists_ from 
 # printing out the operating system and [grepping for](https://man7.org/linux/man-pages/man1/grep.1.html)
 # the darwin OS.
-brewinstall () {
+brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
         echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
 
@@ -102,5 +102,17 @@ brewinstall () {
     return
 }
 
-init
-brewinstall
+nvmInstall () {
+    echo "$PROMPT \n\n ** Installing nvm via cURL (homebrew installation is not supported) ... **"
+
+    if [ -d "/path/to/dir" ]; then
+        echo "\n\n ** nvm is already installed."
+        # The nvm scripts do not copy nvm source scripts twice into bash profile.
+    else 
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    fi
+}
+
+# init
+# brewInstall
+nvmInstall
