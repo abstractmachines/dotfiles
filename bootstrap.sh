@@ -175,8 +175,8 @@ echoExit () {
     echo "\n\n done"
 }
 
-# init
-# brewInstall
+init
+brewInstall
 nvmInstall
 echoExit
 
