@@ -22,19 +22,10 @@ hi () {
 return
 }
 
-init () {
-    hi
-    echo "$PROMPT Let's bootstrap your machine!"
-
-    if proceed; then
-        symlinx
-    fi
-
-    return
-}
+# ***** *****  utils ***** *****
 
 noAction () {
-    echo " * No action taken. *"
+    echo " * No action taken! Quitting now. *"
     exit 1
 }
 
@@ -42,8 +33,8 @@ fallThrough () {
     echo " * No action taken; skipping this step! *"
 }
 
-proceed () {
-    echo "\n** Proceed? (y/n) **"
+proceedOrQuit () {
+    echo "\n** Proceed? Or quit? (y/n) **"
     read yOrN
     if [[ $yOrN =~ [y|Y] ]]; then
         return
@@ -54,7 +45,7 @@ proceed () {
     false
 }
 
-proceedAndSkip () {
+proceedOrSkip () {
      echo "\n** Proceed or Skip? ( y = proceed ... n = skip) **"
     read yOrN
     if [[ $yOrN =~ [y|Y] ]]; then
@@ -66,6 +57,20 @@ proceedAndSkip () {
     false # skip
 }
 
+# ***** *****  bootstrap scripts ***** *****
+
+init () {
+    hi
+    echo "$PROMPT Let's bootstrap your machine!"
+
+    if proceedOrQuit; then
+        symlinx
+    fi
+
+    return
+}
+
+
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
 # RE: conditionals and square brackets in shell scripting:
 # Single brackets are a test command; double brackets are syntax. Mostly unary operators?
@@ -73,7 +78,7 @@ proceedAndSkip () {
 symlinx () {
     echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory. **"
 
-    if proceed; then
+    if proceedOrQuit; then
         echo "\n\n ** Script now symlinking dotfiles to your HOME directory. **\n\n"
 
         if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
@@ -93,6 +98,8 @@ symlinx () {
             ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
         done
 
+        # loop through gitconfig and gitignore in this diretory
+
     fi
 
     return
@@ -107,7 +114,7 @@ brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
         echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
 
-        if proceed; then
+        if proceedOrQuit; then
             sh brew.sh
         fi
     else
@@ -119,7 +126,34 @@ brewInstall () {
 }
 
 nvmInstallNode () {
-    echo "hey"
+    arg1=$1
+    echo "\n\n Installing Node $arg1"
+
+    # nvm is a shell function, so let's source it to make it available to us:
+    . ~/.nvm/nvm.sh
+    nvm --version
+    nvm install $arg1
+
+    return
+}
+
+nvmInstallVersions () {
+    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
+    read nvmV1
+    nvmInstallNode $nvmV1
+
+    nvmInstallContinue
+
+    return
+}
+
+nvmInstallContinue () {
+    echo "\n\n ** Would you like to also [continue to] install (one or more) node versions, with nvm? ** "
+    if proceedOrSkip; then
+        nvmInstallVersions
+    fi
+
+    return
 }
 
 nvmInstall () {
@@ -132,25 +166,17 @@ nvmInstall () {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     fi
 
-    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
-    read nvmV1
+    nvmInstallContinue
 
-    # nvm is a shell function, so let's source it to make it available to us:
-    . ~/.nvm/nvm.sh
-    nvm --version
-    nvm install $nvmV1
+}
 
-    echo "\n\n ** Would you like to install a second Node version as well? ** "
-    if proceedAndSkip; then
-        echo "\n\n Tell us teh version"
-        read nvmV2
-        nvm install $nvmV2
-        # all of this should be in nvmInstallNode with $arg1 as version.
-    fi
-
+# mostly just to ensure scripts are fallthru but also help the user
+echoExit () {
+    echo "\n\n done"
 }
 
 # init
 # brewInstall
 nvmInstall
-# nvmInstallNode # proves we are skipping over nvmInstall stuff.
+echoExit
+
