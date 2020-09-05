@@ -51,18 +51,28 @@ proceed () {
 }
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
+# RE: conditionals and square brackets in shell scripting:
+# Single brackets are a test command; double brackets are syntax. Mostly unary operators?
+# https://unix.stackexchange.com/questions/32210/why-does-parameter-expansion-with-spaces-without-quotes-work-inside-double-brack
 symlinx () {
     echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory. **"
 
     if proceed; then
-        echo "\n\n ** Script now symlinking this repo's bashprofile file, to home dir **\n\n"
-        ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
+        echo "\n\n ** Script now symlinking dotfiles to your HOME directory. **\n\n"
+
+        if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
+        echo "\n ... Symlinking zshrc"
+            ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
+        fi
+        if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+            echo "\n ... Symlinking bashrc"
+            ln -sv "$PWD/.bashrc" "$HOME/.bashrc"
+        fi
+
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
-        ln -sv "$PWD/.bashrc" "$HOME/.bashrc"
+
         mkdir $HOME/cli-utils
         ln -sv "$PWD/./cli-utils/.alias" "$HOME/cli-utils/.alias"
-        # ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
-        # ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
     fi
 
     return
