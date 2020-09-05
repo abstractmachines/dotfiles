@@ -1,5 +1,5 @@
 
-# ***** ***** Aliases ***** *****
+# ***** ***** git ***** *****
 alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m"
@@ -11,6 +11,12 @@ alias npmnuke="rm -rf node_modules/ && npm i"
 # The -G option is equivalent to defining CLICOLOR in the environment.
 # the -h makes it human readable, and -F shows / after dir and @ after executable.
 alias ls="ls -GFh"
+
+# ***** ***** homebrew ***** *****
+alias brewl="brew list"
+alias brews="brew search"
+alias brewcask="brew cask list"
+alias brewsvc="brew services list"
 
 # ***** ***** Kubernetes ***** *****
 alias k8s="kubectl"
