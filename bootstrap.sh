@@ -99,11 +99,8 @@ symlinx () {
     return
 }
 
-# brewInstall: sniffs out what operating system the computer has (the Mac 
-# OSX OS is a Unix-like OS called [Darwin](https://en.wikipedia.org/wiki/Darwin_(operating_system)) 
-# that's *mostly* POSIX-compliant.) The script checks if output _exists_ from 
-# printing out the operating system and [grepping for](https://man7.org/linux/man-pages/man1/grep.1.html)
-# the darwin OS.
+# brewInstall: sniffs out what operating system the computer has - if Darwin, homebrew
+# These dotfiles do not cover the apt/Linux/Debian package managers, or Windows. Only Mac.
 brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
         echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
