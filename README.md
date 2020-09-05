@@ -33,11 +33,10 @@ installs basic software to run your Mac.
 - [ ] git autocomplete
 
 ## TODO after aliases
-- [ ] Actually learn fzf. https://www.freecodecamp.org/news/fzf-a-command-line-fuzzy-finder-missing-demo-a7de312403ff/
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
 
 ## TODO Nice to have
 - [ ] brew tap stuff. like mongodb. https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
-- [ ] Skip step for scripts
+- [ ] Add a skip step, for scripts, e.g. "y/n, or hit s to skip this script."
