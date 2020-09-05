@@ -46,15 +46,15 @@ proceedOrQuit () {
 }
 
 proceedOrSkip () {
-     echo "\n** Proceed or Skip? ( y = proceed ... n = skip) **"
+    echo "\n** Proceed or Skip? ( y = proceed ... n = skip) **"
     read yOrN
     if [[ $yOrN =~ [y|Y] ]]; then
         return
     else 
-        fallThrough
+        fallThrough # TODO Check v. false
     fi
 
-    false # skip
+    false # TODO Check v. fallThrough
 }
 
 # ***** *****  bootstrap scripts ***** *****
@@ -108,7 +108,7 @@ brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
         echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
 
-        if proceedOrQuit; then
+        if proceedOrSkip; then
             sh brew.sh
         fi
     else
@@ -158,26 +158,28 @@ nvmSetDefault () {
 nvmInstall () {
     echo "$PROMPT \n\n ** Installing nvm via cURL (homebrew installation is not supported) ... **"
 
-    if [ -d "/path/to/dir" ]; then
-        echo "\n\n ** nvm is already installed."
-        # The nvm scripts do not copy nvm source scripts twice into bash profile.
-    else 
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-    fi
-
-    echo "\n\n ** Let's install Node w nvm, to get started w proper nvm usage && Node version mgmt. ^_^ ** "
     if proceedOrSkip; then
-        echo "\n\n ** Which version of Node would you like nvm to install? (10,12, etc) ** "
-        read nvmVersion
-        nvmInstallNodeVersions $nvmVersion
-    else
-        echo "\n\n Skipping install of Node. You do need to install at least one version of Node, though."
-    fi
+        if [ -d "/path/to/dir" ]; then
+            echo "\n\n ** nvm is already installed."
+            # The nvm scripts do not copy nvm source scripts twice into bash profile.
+        else 
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        fi
 
-    echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
-    
-    nvmList
-    nvmSetDefault
+        echo "\n\n ** Let's install Node w nvm, to get started w proper nvm usage && Node version mgmt. ^_^ ** "
+        if proceedOrSkip; then
+            echo "\n\n ** Which version of Node would you like nvm to install? (10,12, etc) ** "
+            read nvmVersion
+            nvmInstallNodeVersions $nvmVersion
+        else
+            echo "\n\n Skipping install of Node. You do need to install at least one version of Node, though."
+        fi
+
+        echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
+        
+        nvmList
+        nvmSetDefault
+    fi
 }
 
 # gitCompletion() : autocomplete branch names on CLI
@@ -195,9 +197,9 @@ echoExit () {
 }
 
 init
-# symlinx
-# brewInstall
+symlinx
+brewInstall
 nvmInstall
-# gitCompletion
+gitCompletion
 echoExit
 
