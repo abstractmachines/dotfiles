@@ -27,8 +27,6 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
-- [ ] brew search
-
 - [ ] nvm sourcing
 - [ ] git autocomplete
 

@@ -71,8 +71,12 @@ symlinx () {
 
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
 
+        # loop through dotfiles in utils. These are imported into (sourced by) bash_profile.   
         mkdir $HOME/cli-utils
-        ln -sv "$PWD/./cli-utils/.alias" "$HOME/cli-utils/.alias"
+        for file in $( ls -a $PWD/cli-utils ) ; do
+            ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
+        done
+
     fi
 
     return
