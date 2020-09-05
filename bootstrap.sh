@@ -128,23 +128,15 @@ nvmInstallNode () {
     nvm --version
     nvm install $arg1
 
-    return
-}
-
-nvmInstallVersions () {
-    echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
-    read nvmV1
-    nvmInstallNode $nvmV1
-
-    nvmInstallContinue
-
-    return
+    nvmInstallContinue # a bit circular, but less stiff than a do-while loop.
 }
 
 nvmInstallContinue () {
     echo "\n\n ** Would you like to also [continue to] install (one or more) node versions, with nvm? ** "
     if proceedOrSkip; then
-        nvmInstallVersions
+        echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
+        read nvmVersion
+        nvmInstallNode $nvmVersion
     fi
 
     return

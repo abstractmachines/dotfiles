@@ -27,7 +27,6 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
-
 - [ ] PR: git autocomplete CLI
 
 - [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up! ANd document it too.
