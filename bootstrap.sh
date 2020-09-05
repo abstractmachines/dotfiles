@@ -1,6 +1,6 @@
 #!/bin/bash   
 
-PROMPT='abstractmachines-bootstrap'
+PROMPT='abstractmachines-bootstrap '
 
 hi () {
     echo "\n\n\n *** DOTFILES KITTEH ***
@@ -119,7 +119,7 @@ brewInstall () {
     return
 }
 
-nvmInstallNode () {
+nvmInstallNodeVersions () {
     arg1=$1
     echo "\n\n Installing Node $arg1"
 
@@ -127,16 +127,29 @@ nvmInstallNode () {
     . ~/.nvm/nvm.sh
     nvm --version
     nvm install $arg1
-
-    nvmInstallContinue # a bit circular, but less stiff than a do-while loop.
 }
 
-nvmInstallContinue () {
-    echo "\n\n ** Would you like to also [continue to] install (one or more) node versions, with nvm? ** "
+nvmList () {
+    echo "\n\n ** Here are the versions of Node you have installed with nvm. ** "
+    echo "\n... Note the default version is indicated. You can use nvm use <version> to change that. ** "
+    # nvm is a shell function, so let's source it to make it available to us:
+    . ~/.nvm/nvm.sh
+    nvm ls
+}
+
+nvmSetDefault () {
+    echo "\n\n ** Which version of Node would you like to use right now? (Use integers / whole numbers, like 10, or 9). ** "
+    read nvmUse
+    nvm use $nvmUse
+    # TODO if not available, install it. nvm use should have "Now using node" output. $? Or, sad path: "is not yet installed."
+    # nvmInstallNodeVersions $nvmUse
+
+    echo "\n\n ** Would you like to set the default Node version with nvm? ** "
     if proceedOrSkip; then
-        echo "\n\n ** Which version of npm would you like nvm to install? (10,12, etc) ** "
-        read nvmVersion
-        nvmInstallNode $nvmVersion
+        echo "\n\n ** What version should be the default? ** "
+        read defaultNode
+        nvm alias default $defaultNode
+        return
     fi
 
     return
@@ -152,9 +165,22 @@ nvmInstall () {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     fi
 
-    nvmInstallContinue
+    echo "\n\n ** Let's install Node w nvm, to get started w proper nvm usage && Node version mgmt. ^_^ ** "
+    if proceedOrSkip; then
+        echo "\n\n ** Which version of Node would you like nvm to install? (10,12, etc) ** "
+        read nvmVersion
+        nvmInstallNodeVersions $nvmVersion
+    else
+        echo "\n\n Skipping install of Node. You do need to install at least one version of Node, though."
+    fi
+
+    echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
+    
+    nvmList
+    nvmSetDefault
 }
 
+# gitCompletion() : autocomplete branch names on CLI
 gitCompletion () {
     echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
 
@@ -169,9 +195,9 @@ echoExit () {
 }
 
 init
-symlinx
+# symlinx
 # brewInstall
-# nvmInstall
-gitCompletion
+nvmInstall
+# gitCompletion
 echoExit
 

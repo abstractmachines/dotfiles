@@ -27,7 +27,11 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
+- [ ] nvm set default. nvm ls. npm list.
+
 - [ ] PR: git autocomplete CLI
+
+- [ ] return statements.
 
 - [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up! ANd document it too.
 
