@@ -31,6 +31,8 @@ installs basic software to run your Mac.
 
 - [ ] Uninstall Node from homebrew installation. We're using it via nvm. Look this up!
 
+- [ ] symlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
+
 - [ ] PATH: VSCode binary
 
 - [ ] Set a color scheme like Ham Vocke.

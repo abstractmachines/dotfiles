@@ -98,6 +98,8 @@ symlinx () {
             ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
         done
 
+        # loop through gitconfig and gitignore in this diretory
+
     fi
 
     return
