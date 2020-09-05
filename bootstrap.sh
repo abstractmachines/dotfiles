@@ -154,6 +154,7 @@ nvmUseSetDefault () {
 nvmInstallFollowup () {
     # nvm is a shell function, so let's source it to make it available to us:
     . ~/.nvm/nvm.sh
+    
     nvmList
 
     echo "\n\n ** Now that nvm is installed, let's install Node versions with it. ** "
@@ -176,7 +177,7 @@ nvmInstall () {
     echo "$PROMPT \n\n ** Installing nvm via cURL (homebrew installation is not supported) ... **"
 
     if proceedOrSkip; then
-        if [ -d "/path/to/dir" ]; then
+        if [ -d "$HOME/.nvm" ]; then
             echo "\n\n ** nvm is already installed."
             # The nvm scripts do not copy nvm source scripts twice into bash profile.
         else 
