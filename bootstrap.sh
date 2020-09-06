@@ -135,7 +135,7 @@ nvmDefault () {
         read setDefault
         nvm alias default $setDefault
         touch ~/.nvmrc
-        echo "$setDefault" > .nvmrc
+        echo "$setDefault" > ~/.nvmrc
         # nvm use $setDefault ... TODO: Persist this outside of script to shell:
         # - grep around for the binary (using regex)in $HOME/.nvm/node/versions;
         # - find the proper binary (regex match w/ user input $setDefault), 
