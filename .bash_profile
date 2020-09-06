@@ -1,10 +1,12 @@
-# source ./cli-utils/.nvm
-# source ./cli-utils/.git
-
-export PATH="/usr/local/sbin:/Users/carebearstare/.nvm/versions/node/v10.15.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-
 source ~/cli-utils/.alias
+# source ~/cli-utils/.git-conf
+
+# doesn't work:
+# Git branch in prompt.
+# parse_git_branch() {
+#   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# parse_git_branch
 
 
 # ***** Colors
@@ -30,4 +32,3 @@ source ~/cli-utils/.alias
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
