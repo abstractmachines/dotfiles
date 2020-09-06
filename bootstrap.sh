@@ -24,7 +24,6 @@ return
 
 # ***** *****  utils ***** *****
 
-# get rid of me.
 noAction () {
     echo " * No action taken! Quitting now. *"
     exit 1
@@ -34,7 +33,6 @@ fallThrough () {
     echo " * No action taken; skipping this step! *"
 }
 
-# get rid of me.
 proceedOrQuit () {
     echo "\n** Proceed? Or quit? (y/n) **"
     read yOrN
