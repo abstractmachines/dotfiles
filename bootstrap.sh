@@ -76,6 +76,8 @@ symlinx () {
     echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory ... **"
 
     if proceedOrQuit; then
+        ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
+
         if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         echo "\n ... Symlinking zshrc"
             ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
@@ -84,8 +86,6 @@ symlinx () {
             echo "\n ... Symlinking bashrc"
             ln -sv "$PWD/.bashrc" "$HOME/.bashrc"
         fi
-
-        ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
 
         # loop through dotfiles in utils. These are imported into (sourced by) bash_profile.   
         mkdir $HOME/cli-utils
@@ -188,6 +188,7 @@ gitCompletion () {
         curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
         mkdir ~/.zsh
         curl -o ~/.zsh/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+        cp ~/.zsh/git-completion.zsh ~/.zsh/_gitcompletion
         curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
     fi
 }
@@ -199,7 +200,7 @@ echoExit () {
 
 init
 symlinx
-brewInstall
-nvmInstall
+# brewInstall
+# nvmInstall
 gitCompletion
 echoExit
