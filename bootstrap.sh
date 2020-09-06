@@ -95,6 +95,7 @@ symlinx () {
         done
 
         # loop through gitconfig and gitignore in this diretory
+        
 
     fi
 
