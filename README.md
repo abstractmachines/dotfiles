@@ -13,7 +13,7 @@ this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Ho
 
 2. `git clone` this repo ([instructions here on how to clone a repo](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)) and `cd` into `dotfiles` dir.
 
-3. Run the bootstrap script. `sh ./bootstrap.sh`.
+3. Run the bootstrap script. `sh ./init.bootstrap.sh`.
 
 4. Tell your shell to recognize the changes to your environment, by [sourcing 
 your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line) with `source ~/.bash_profile`.

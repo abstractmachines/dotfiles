@@ -42,7 +42,10 @@ symlinx () {
         ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
     done
 
-    # TODO loop through gitconfig and gitignore in this diretory
+    # TODO recursively, hence cli-utils.
+    for file in $( ls -A | grep -vE '\.bootstrap*|\.git$|\.gitignore|\.gitmodules|*.md\img\*.swp\LICENSE' ) ; do
+			ln -sv "$PWD/$file" "$HOME"
+    done
 
     echo "$PROMPT Your symlinks are now complete. Here's HOME dir: **\n\n"
     ls -al ~/
@@ -59,7 +62,7 @@ gitCompletion () {
 
 brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
-        sh brew.sh
+        sh brew.bootstrap.sh
     else
         echo "$PROMPT You're not on Mac/OSX. You'll have to use different dotfiles (for now) for package management.** "
         exit 1
