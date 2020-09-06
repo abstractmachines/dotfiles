@@ -25,10 +25,6 @@ installs basic software to run your Mac.
 
 # TODO list
 
-- [ ] return statements.
-
-- [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up! ANd document it too.
-
 - [ ] PR: symlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
 
 - [ ] PATH: VSCode binary and other PATH settings, do this automagically as well.

@@ -194,3 +194,5 @@ gitCompletion
 brewInstall
 nvmInstall
 echoExit
+
+# unset init, symlinx ...

@@ -9,13 +9,11 @@ brewInstall () {
 
   if [[ $status =~ 0 ]]; then 
     echo "Homebrew is already installed."
-    return
   fi
 
   if [[ $status =~ 1 ]]; then 
     echo "\n ** Homebrew is not yet installed. Installing now! **"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    return
   fi
 }
 
@@ -55,8 +53,6 @@ brewMongo () {
 
 brewUninstall () {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
-
-  return
 }
 
 brewInstall
