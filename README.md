@@ -25,13 +25,12 @@ installs basic software to run your Mac.
 
 # TODO list
 
-- [ ] PR: symlinx() : TODO loop through gitconfig and gitignore in this diretory (copy those files over to symlinked home dir)
-
-- [ ] PATH: VSCode binary and other PATH settings, do this automagically as well.
+- [ ] PATH: VSCode binary / other binaries
 
 - [ ] tmux, and tmux conf.
 
 PR: Colors
+- [ ] Terminal
 - [ ] Set a color scheme like Ham Vocke.
 - [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
