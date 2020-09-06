@@ -1,7 +1,5 @@
 #!/bin/bash   
 
-PROMPT='abstractmachines-bootstrap '
-
 hi () {
     echo "\n\n\n *** DOTFILES KITTEH ***
 
@@ -24,17 +22,15 @@ return
 
 # ***** *****  utils ***** *****
 
-# get rid of me.
 noAction () {
-    echo " * No action taken! Quitting now. *"
+    echo "\n\n** No action taken! Quitting now. *"
     exit 1
 }
 
 fallThrough () {
-    echo " * No action taken; skipping this step! *"
+    echo "\n\n** No action taken; skipping this step! *"
 }
 
-# get rid of me.
 proceedOrQuit () {
     echo "\n** Proceed? Or quit? (y/n) **"
     read yOrN
@@ -63,9 +59,7 @@ proceedOrSkip () {
 
 init () {
     hi
-    echo "$PROMPT Let's bootstrap your machine!"
-
-    return
+    echo "\n\n ** Let's bootstrap your machine! ** "
 }
 
 # symlinx() : the only mandatory part of this install (proceedOrQuit).
@@ -74,7 +68,7 @@ init () {
 # Single brackets are a test command; double brackets are syntax. Mostly unary operators?
 # https://unix.stackexchange.com/questions/32210/why-does-parameter-expansion-with-spaces-without-quotes-work-inside-double-brack
 symlinx () {
-    echo "$PROMPT \n\n ** Symlinking dotfiles repo to HOME directory ... **"
+    echo "\n\n ** Symlinking dotfiles repo to HOME directory ... **"
 
     if proceedOrQuit; then
         ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
@@ -95,15 +89,13 @@ symlinx () {
         done
 
         # loop through gitconfig and gitignore in this diretory
-
+        
     fi
-
-    return
 }
 
 # gitCompletion() : tab to autocomplete, and display branch names on CLI prompt
 gitCompletion () {
-    echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
+    echo "\n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
 
     if proceedOrSkip; then
         curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
@@ -118,17 +110,15 @@ gitCompletion () {
 # These dotfiles do not cover the apt/Linux/Debian package managers, or Windows. Only Mac.
 brewInstall () {
     if [ $( echo $OSTYPE | grep 'darwin' ) ] ; then
-        echo "$PROMPT \n\n ** Installing OSX's Homebrew package manager. **"
+        echo "\n\n ** Installing OSX's Homebrew package manager. **"
 
         if proceedOrSkip; then
             sh brew.sh
         fi
     else
-        echo " ** You're not on Mac/OSX. You'll have to use different dotfiles (for now) for package management.** "
+        echo "** You're not on Mac/OSX. You'll have to use different dotfiles (for now) for package management.** "
         noAction
     fi
-
-    return
 }
 
 nvmInstallNodeVersions () {
@@ -136,14 +126,14 @@ nvmInstallNodeVersions () {
 }
 
 nvmList () {
-    echo "\n\n ** Here are the versions of Node you have installed with nvm. ** "
+    echo "\n\n** Here are the versions of Node you have installed with nvm. ** "
     nvm ls
 }
 
 nvmDefault () {
     nvmList
 
-    echo "\n\n ** Would you like to set the default Node version with nvm? ** "
+    echo "\n\n** Would you like to set the default Node version with nvm? ** "
     if proceedOrSkip; then
         echo "\n\n ** What version should be the default? (10, 12, etc) ** "
         read setDefault
@@ -163,23 +153,23 @@ nvmInstallFollowup () {
     
     nvmList
 
-    echo "\n\n ** Now that nvm is installed, let's install Node versions with it. ** "
+    echo "\n\n** Now that nvm is installed, let's install Node versions with it. ** "
     if proceedOrSkip; then
-        echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
+        echo "\n\n** Which version of Node would you like nvm to install? (10, 12, etc) ** "
         read nvmVersion
         nvmInstallNodeVersions $nvmVersion
     else
-        echo "\n\n Skipping install of Node."
+        echo "\n\n** Skipping install of Node."
     fi
 
-    echo "\n\n ** Let's finish our Node/nvm setup by setting default versions and what to use. **"
+    echo "\n\n** Let's finish our Node/nvm setup by setting default versions and what to use. **"
     nvmDefault
 
-    echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
+    echo "\n\n** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
 }
 
 nvmInstall () {
-    echo "$PROMPT \n\n ** Installing nvm via cURL (homebrew installation is not supported) ... **"
+    echo "\n\n** Installing nvm via cURL (homebrew installation is not supported) ... **"
 
     if proceedOrSkip; then
         if [ -d "$HOME/.nvm" ]; then
@@ -191,12 +181,11 @@ nvmInstall () {
     fi
 
     nvmInstallFollowup
-    return
 }
 
 # mostly just to ensure scripts are fallthru but also help the user
 echoExit () {
-    echo "\n\n done"
+    echo "\n\nDone."
 }
 
 init
