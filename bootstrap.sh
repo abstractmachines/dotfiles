@@ -24,6 +24,7 @@ return
 
 # ***** *****  utils ***** *****
 
+# get rid of me.
 noAction () {
     echo " * No action taken! Quitting now. *"
     exit 1
@@ -33,6 +34,7 @@ fallThrough () {
     echo " * No action taken; skipping this step! *"
 }
 
+# get rid of me.
 proceedOrQuit () {
     echo "\n** Proceed? Or quit? (y/n) **"
     read yOrN
@@ -65,7 +67,6 @@ init () {
 
     return
 }
-
 
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
 # RE: conditionals and square brackets in shell scripting:
