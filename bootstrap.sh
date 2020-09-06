@@ -200,7 +200,7 @@ echoExit () {
 
 init
 symlinx
-# brewInstall
-# nvmInstall
+brewInstall
+nvmInstall
 gitCompletion
 echoExit

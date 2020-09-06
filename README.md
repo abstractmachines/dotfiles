@@ -25,12 +25,6 @@ installs basic software to run your Mac.
 
 # TODO list
 
-
-## TODO List aliases
-
-- [ ] PR: git autocomplete CLI
-note: source:3: no such file or directory: /Users/carebear/.git-completion.bash
-
 - [ ] return statements.
 
 - [ ] PR: Uninstall Node from homebrew installation. We're using it via nvm. Look this up! ANd document it too.
