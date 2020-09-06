@@ -1,3 +1,4 @@
 . ~/.bash_profile
 
-# source ~/.git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)

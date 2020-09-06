@@ -185,7 +185,9 @@ gitCompletion () {
     echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
 
     if proceedOrSkip; then
-        curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+        curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+        mkdir ~/.zsh
+        curl -o ~/.zsh/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     fi
 }
 

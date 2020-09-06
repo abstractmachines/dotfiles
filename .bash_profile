@@ -1,9 +1,3 @@
-# source ./cli-utils/.nvm
-# source ./cli-utils/.git
-
-export PATH="/usr/local/sbin:/Users/carebearstare/.nvm/versions/node/v10.15.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-
 source ~/cli-utils/.alias
 # source ~/cli-utils/.git-conf
 
