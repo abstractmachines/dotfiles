@@ -27,9 +27,6 @@ installs basic software to run your Mac.
 
 
 ## TODO List aliases
-- [x] Be able to skip all scripts except symlinks.
-
-- [ ] nvm install a version that is not there for "nvm use"
 
 - [ ] PR: git autocomplete CLI
 note: source:3: no such file or directory: /Users/carebear/.git-completion.bash

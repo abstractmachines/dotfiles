@@ -1,3 +1,3 @@
 . ~/.bash_profile
 
-source ~/.git-completion.bash
+# source ~/.git-completion.bash

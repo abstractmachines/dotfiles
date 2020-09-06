@@ -125,30 +125,21 @@ nvmList () {
     nvm ls
 }
 
-nvmUseSetDefault () {
+nvmDefault () {
     nvmList
-    echo "\n\n ** Which version of Node would you like to use right now? (Use integers / whole numbers, like 10, or 9). ** "
-    read nvmUse
-    nvm use $nvmUse
-    node -v
-    # status=$?
-    # if [ $status -ne 0 ]; then
-    #     echo "\n\n ** Whoops, that version isn't installed yet. Would you like to install it? **"
-    #     if proceedOrSkip; then 
-    #         nvm install $nvmUse
-    #     fi
-    # fi
 
-    # echo "\n\n ** Would you like to set the default Node version with nvm? ** "
-    # if proceedOrSkip; then
-    #     echo "\n\n ** What version should be the default? (10, 12, etc) ** "
-    #     read setDefault
-    #     nvm alias default $setDefault
-    #     nvm use $setDefault
-    #     return
-    # fi
-
-    # return
+    echo "\n\n ** Would you like to set the default Node version with nvm? ** "
+    if proceedOrSkip; then
+        echo "\n\n ** What version should be the default? (10, 12, etc) ** "
+        read setDefault
+        nvm alias default $setDefault
+        touch ~/.nvmrc
+        echo "$setDefault" > .nvmrc
+        # nvm use $setDefault ... TODO: Persist this outside of script to shell:
+        # - grep around for the binary (using regex)in $HOME/.nvm/node/versions;
+        # - find the proper binary (regex match w/ user input $setDefault), 
+        # - add that to $PATH. `nvm use` is annoying, so just use it yo-self.
+    fi
 }
 
 nvmInstallFollowup () {
@@ -162,13 +153,12 @@ nvmInstallFollowup () {
         echo "\n\n ** Which version of Node would you like nvm to install? (10, 12, etc) ** "
         read nvmVersion
         nvmInstallNodeVersions $nvmVersion
-        # TODO Version '110' not found
     else
         echo "\n\n Skipping install of Node."
     fi
 
     echo "\n\n ** Let's finish our Node/nvm setup by setting default versions and what to use. **"
-    nvmUseSetDefault
+    nvmDefault
 
     echo "\n\n ** ... To install more versions of Node with nvm later, use the nvm install <version> command.** "
 }
@@ -204,8 +194,8 @@ echoExit () {
 }
 
 init
-# symlinx
-# brewInstall
+symlinx
+brewInstall
 nvmInstall
-# gitCompletion
+gitCompletion
 echoExit
