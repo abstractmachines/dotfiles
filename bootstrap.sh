@@ -68,6 +68,7 @@ init () {
     return
 }
 
+# symlinx() : the only mandatory part of this install (proceedOrQuit).
 # man ln: make links. ln w opt -s makes symlinks; w/ opt v, verbosely.
 # RE: conditionals and square brackets in shell scripting:
 # Single brackets are a test command; double brackets are syntax. Mostly unary operators?
@@ -98,6 +99,19 @@ symlinx () {
     fi
 
     return
+}
+
+# gitCompletion() : tab to autocomplete, and display branch names on CLI prompt
+gitCompletion () {
+    echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
+
+    if proceedOrSkip; then
+        curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+        mkdir ~/.zsh
+        curl -o ~/.zsh/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+        cp ~/.zsh/git-completion.zsh ~/.zsh/_gitcompletion
+        curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+    fi
 }
 
 # brewInstall: sniffs out what operating system the computer has - if Darwin, homebrew
@@ -180,19 +194,6 @@ nvmInstall () {
     return
 }
 
-# gitCompletion() : autocomplete branch names on CLI
-gitCompletion () {
-    echo "$PROMPT \n\n ** Now installing, Bash/zsh autocompletion (branch name in CLI) **"
-
-    if proceedOrSkip; then
-        curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-        mkdir ~/.zsh
-        curl -o ~/.zsh/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-        cp ~/.zsh/git-completion.zsh ~/.zsh/_gitcompletion
-        curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-    fi
-}
-
 # mostly just to ensure scripts are fallthru but also help the user
 echoExit () {
     echo "\n\n done"
@@ -200,7 +201,7 @@ echoExit () {
 
 init
 symlinx
+gitCompletion
 brewInstall
 nvmInstall
-gitCompletion
 echoExit
