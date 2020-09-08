@@ -133,8 +133,8 @@ init
 gitConf
 symlinx
 gitCompletion
-# brewInstall
-# nvmInstall
+brewInstall
+nvmInstall
 echoExit
 
 # unset init, symlinx ...
