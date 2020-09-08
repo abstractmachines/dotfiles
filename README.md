@@ -24,16 +24,14 @@ Notice that the bootstrap script has a few functions; the bootstrap script
 installs basic software to run your Mac. 
 
 # TODO list
+- [ ] For gitconfig, use env files / YAML files instead of sloppy invalidated scripts
+- [ ] Use env files / YAML files for aliases for k8s, dbs etc. 
 
 - [ ] PATH: VSCode binary / other binaries
 
 - [ ] tmux, and tmux conf.
 
 PR: Colors
-- [ ] Terminal
 - [ ] Set a color scheme like Ham Vocke.
-- [ ] Screenfetch on new mac
 - [ ] Image of script running (dotfiles kitteh)
 
-# Final
-- [ ] Make history safe
