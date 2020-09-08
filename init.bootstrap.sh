@@ -28,8 +28,6 @@ init () {
 symlinx () {
     echo "$PROMPT Symlinking dotfiles repo to HOME directory ... **"
 
-    ln -sv "$PWD/.bash_profile" "$HOME/.bash_profile"
-
     if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
     fi
@@ -43,8 +41,11 @@ symlinx () {
     done
 
     # TODO recursively, hence cli-utils.
-    for file in $( ls -A | grep -vE '\.bootstrap*|\.git$|\.gitignore|\.gitmodules|*.md\img\*.swp\LICENSE' ) ; do
-			ln -sv "$PWD/$file" "$HOME"
+    regexLinx="\.git[^$^i]|\.bash[^r^c]|terminal|cli-utils"
+    for file in $( ls -a ) ; do
+        if [[ $file =~ $regexLinx ]]; then
+            ln -sv "$PWD/$file" "$HOME"
+        fi
     done
 
     echo "$PROMPT Your symlinks are now complete. Here's HOME dir: **\n\n"
