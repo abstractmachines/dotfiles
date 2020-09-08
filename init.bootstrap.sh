@@ -124,6 +124,10 @@ nvmInstall () {
     nvmInstallFollowup
 }
 
+addPath () {
+    export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+}
+
 # mostly just to ensure scripts are fallthru but also help the user
 echoExit () {
     echo "$PROMPT Done."
@@ -135,6 +139,7 @@ symlinx
 gitCompletion
 brewInstall
 nvmInstall
+addPath
 echoExit
 
 # unset init, symlinx ...
