@@ -25,6 +25,19 @@ init () {
     echo "$PROMPT Let's bootstrap your machine! ** "
 }
 
+# TODO: This is a lazy, goofy way to do this; env vars should be in a YAML file.
+gitConf () {
+    echo "\n\n Enter your GitHub username (this is not validated, so be careful):"
+    read gitUsr
+    # export GIT_USR="$gitUsr" # meh. child shell processes, forking, and all that.
+    echo "\n\n Enter your GitHub email:"
+    read gitEml
+    echo "\n[user]" >> .gitconfig
+    echo "\nname = $gitUsr" >> .gitconfig
+    echo "\nemail = $gitEml" >> .gitconfig
+    # Then, don't commit this symlinked file. Also ... fix this lazy stuff :)
+}
+
 symlinx () {
     echo "$PROMPT Symlinking dotfiles repo to HOME directory ... **"
 
@@ -117,10 +130,11 @@ echoExit () {
 }
 
 init
+gitConf
 symlinx
 gitCompletion
-brewInstall
-nvmInstall
+# brewInstall
+# nvmInstall
 echoExit
 
 # unset init, symlinx ...
