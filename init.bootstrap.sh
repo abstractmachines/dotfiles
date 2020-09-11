@@ -25,17 +25,15 @@ init () {
     echo "$PROMPT Let's bootstrap your machine! ** "
 }
 
-# TODO: This is a lazy, goofy way to do this; env vars should be in a YAML file.
 gitConf () {
-    echo "\n\n Enter your GitHub username (this is not validated, so be careful):"
-    read gitUsr
-    # export GIT_USR="$gitUsr" # meh. child shell processes, forking, and all that.
-    echo "\n\n Enter your GitHub email:"
-    read gitEml
-    echo "\n[user]" >> .gitconfig
-    echo "\nname = $gitUsr" >> .gitconfig
-    echo "\nemail = $gitEml" >> .gitconfig
-    # Then, don't commit this symlinked file. Also ... fix this lazy stuff :)
+    echo "$PROMPT Now reading env file to build a .gitconfig file in $HOME ..."
+    source .env
+    touch $HOME/.gitconfig
+    # gitConfUsr=$HOME/.gitconfig
+    cat .gitconfig-setup >> $HOME/.gitconfig
+    echo "\n[user]" >> $HOME/.gitconfig
+    echo "\nname = $GITHUB_USERNAME" >> $HOME/.gitconfig
+    echo "\nemail = $GITHUB_EMAIL" >> $HOME/.gitconfig
 }
 
 symlinx () {
@@ -53,8 +51,7 @@ symlinx () {
         ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
     done
 
-    # TODO recursively, hence cli-utils.
-    regexLinx="\.git[^$^i]|\.bash[^r^c]|terminal|cli-utils"
+    regexLinx="\.git[^$^i^c]|\.bash[^r^c]|terminal|cli-utils"
     for file in $( ls -a ) ; do
         if [[ $file =~ $regexLinx ]]; then
             ln -sv "$PWD/$file" "$HOME"
@@ -137,8 +134,8 @@ init
 gitConf
 symlinx
 gitCompletion
-brewInstall
-nvmInstall
+# brewInstall
+# nvmInstall
 addPath
 echoExit
 

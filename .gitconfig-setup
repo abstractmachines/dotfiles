@@ -29,5 +29,3 @@
   added = yellow bold
   changed = magenta bold
   untracked = cyan bold
-
-[user]

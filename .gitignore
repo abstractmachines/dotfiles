@@ -1,3 +1,6 @@
+# env vars
+.env
+
 # ***** dotfiles unwanted artifacts
 # symlinking: sourcing nvm adds to bash profile
 .bash_profile.swp
