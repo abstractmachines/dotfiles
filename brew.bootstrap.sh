@@ -1,36 +1,28 @@
 #!/bin/bash
 
-PROMPT='abstractmachines-bootstrap-brew'
+PROMPT="\n\n** "
 
 brewInstall () {
-  echo "\n ** Checking to see if Homebrew is installed ... ** "
+  echo "$PROMPT Installing OSX's Homebrew package manager. **"
+
   which brew
   status=$?
-
-  if [[ $status =~ 0 ]]; then 
-    echo "Homebrew is already installed."
-    return
-  fi
-
-  if [[ $status =~ 1 ]]; then 
-    echo "\n ** Homebrew is not yet installed. Installing now! **"
+  if [[ $status =~ 1 ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    return
   fi
 }
 
 brewFresh () {
-  echo "\n\n\n ** Let's make fresh brew! Running upgrades ... ** "
   brew update
   brew upgrade
+  # GNU Core Utilities
   brew install coreutils
+  # brew install bash
+  # brew install wget
 
-  return
 }
 
 brewDarwin () {
-  echo "\n\n\n ** Let's brew up some OSX installs! ** "
-
   brew install docker
   brew install fzf
   brew install gdb
@@ -55,11 +47,14 @@ brewMongo () {
 
 brewUninstall () {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
-
-  return
 }
 
 brewInstall
 brewFresh
 brewDarwin
+
+# remove outdated versions from Cellar 
 brew cleanup
+
+echo "$PROMPT Homebrew packages: **"
+brew list

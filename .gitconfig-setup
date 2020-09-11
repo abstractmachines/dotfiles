@@ -1,9 +1,12 @@
 # This is Git's per-user configuration file.
 # It's generally in /Users/yourusername/.gitconfig
-[user]
-# Please adapt and uncomment the following lines:
-	name = github-username
-	email = github-username@domain.com
+
+# NOTE that this is an extremely lazy way to go about things, and goofy.
+# rather than having the env vars in a YAML file / dotenv,
+# We're just echoing it in ad appending it to this file in init.bootstrap.sh.
+# [user]
+  # name = gitusername
+  # email = gitemail
 
 # Terminal settings for kitteh mode:
 [color]

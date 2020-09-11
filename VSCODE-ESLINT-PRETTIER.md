@@ -1,5 +1,5 @@
 
-# Installing ESLint + Prettier for VSCode Proejcts
+# Installing ESLint + Prettier for VSCode Projects
 
 1. Install ESLint && Prettier VSCode Extensions
 2. CMD , -> Preferences -> set things up and stuff using search
