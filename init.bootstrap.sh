@@ -27,17 +27,22 @@ init () {
 
 gitConf () {
     echo "$PROMPT Now reading env file to build a .gitconfig file in $HOME ..."
-    source .env
-    touch $HOME/.gitconfig
-    # gitConfUsr=$HOME/.gitconfig
-    cat .gitconfig-setup >> $HOME/.gitconfig
-    echo "\n[user]" >> $HOME/.gitconfig
-    echo "\nname = $GITHUB_USERNAME" >> $HOME/.gitconfig
-    echo "\nemail = $GITHUB_EMAIL" >> $HOME/.gitconfig
+    if [[ -f .env ]]; then
+        source .env
+        touch $HOME/.gitconfig
+        cat .gitconfig-setup >> $HOME/.gitconfig
+        echo "\n[user]" >> $HOME/.gitconfig
+        echo "\nname = $GITHUB_USERNAME" >> $HOME/.gitconfig
+        echo "\nemail = $GITHUB_EMAIL" >> $HOME/.gitconfig
+    else 
+        echo "$PROMPT You need to have an .env file in this directory to proceed. Quitting."
+        exit 1
+    fi
+    
 }
 
 symlinx () {
-    echo "$PROMPT Symlinking dotfiles repo to HOME directory ... **"
+    echo "$PROMPT Symlinking dotfiles repo to $HOME ... **"
 
     if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         ln -sv "$PWD/.zshrc" "$HOME/.zshrc"
@@ -58,7 +63,7 @@ symlinx () {
         fi
     done
 
-    echo "$PROMPT Your symlinks are now complete. Here's HOME dir: **\n\n"
+    echo "$PROMPT Your symlinks are now complete. Let's look at $HOME : **\n\n"
     ls -al ~/
 }
 
@@ -134,8 +139,8 @@ init
 gitConf
 symlinx
 gitCompletion
-# brewInstall
-# nvmInstall
+brewInstall
+nvmInstall
 addPath
 echoExit
 

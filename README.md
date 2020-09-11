@@ -3,8 +3,14 @@
 ![Screenfetch](./img/screenfetch-dotfiles.png)
 
 ## Lightning/Quick Install
-Run `sh init.bootstrap.exclude.sh` and it'll symlink to your home directory. Clone or
-fork the repo, modify as needed, and use as your own! ^_^
+After creating `.env` file in root dir of this repo, run `sh init.bootstrap.exclude.sh`
+and it'll symlink appropriate dotfiles to your home directory.
+
+> Sample .env file:
+```
+GITHUB_USERNAME="your-username"
+GITHUB_EMAIL="your-username@domain.com"
+```
 
 ## Installation (Detailed / For Beginners)
 1. Back up your existing dotfiles. If your dotfiles are stored in `bash_profile`
@@ -13,16 +19,16 @@ this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Ho
 
 2. `git clone` this repo ([instructions here on how to clone a repo](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)) and `cd` into `dotfiles` dir.
 
-3. Run the bootstrap script. `sh ./init.bootstrap.sh`.
+3. Create an `.env` file for your Github username and email. [Here's why](https://12factor.net/config).
 
-4. Tell your shell to recognize the changes to your environment, by [sourcing 
+4. Run the bootstrap script. `sh ./init.bootstrap.sh`.
+
+5. Tell your shell to recognize the changes to your environment, by [sourcing 
 your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line) with `source ~/.bash_profile`.
 
 # TODO list
 - [ ] tmux / conf.
-
-- [ ] (12 Factor App) For gitconfig, use env files / YAML files instead of sloppy invalidated scripts
-- [ ] Use env files / YAML files for aliases for k8s, dbs etc. 
+- [ ] aliases: use env files
 
 Colors (next up)
 - [ ] Base16 shell https://github.com/chriskempson/base16-shell
