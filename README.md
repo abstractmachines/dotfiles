@@ -29,6 +29,7 @@ your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bas
 # TODO list
 - [ ] tmux / conf.
 - [ ] aliases: use env files
+- [ ] oh my zsh
 
 Colors (next up)
 - [ ] Base16 shell https://github.com/chriskempson/base16-shell

@@ -1,13 +1,5 @@
 source ~/cli-utils/.alias
-# source ~/cli-utils/.git-conf
-
-# doesn't work:
-# Git branch in prompt.
-# parse_git_branch() {
-#   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-# }
-# parse_git_branch
-
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 # ***** Colors
 # changes the bash prompt to be colorized, and rearranges the prompt such as “username@hostname:cwd $”
