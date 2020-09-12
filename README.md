@@ -12,6 +12,12 @@ GITHUB_USERNAME="your-username"
 GITHUB_EMAIL="your-username@domain.com"
 ```
 
+## This work was based on (thanks to):
+- [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) - The go-to place for dotfiles inspiration
+- [@hamvocke's dotfiles](https://github.com/hamvocke/dotfiles)
+- [@ajmalsiddiqui's dotfiles](https://github.com/ajmalsiddiqui/dotfiles/)
+- [Readline Cheat Sheet](https://readline.kablamo.org/emacs.html)
+
 ## Installation (Detailed / For Beginners)
 1. Back up your existing dotfiles. If your dotfiles are stored in `bash_profile`
 in your home directory, make a backup copy of that file, because the scripts in
