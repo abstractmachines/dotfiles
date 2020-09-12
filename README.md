@@ -45,7 +45,6 @@ this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Ho
 your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line) with `source ~/.bash_profile`.
 
 # TODO list
-- [ ] tmux / conf.
 - [ ] aliases: use env files
 - [ ] oh my zsh
 
