@@ -56,7 +56,7 @@ symlinx () {
         ln -sv "$PWD/cli-utils/$file" "$HOME/cli-utils"
     done
 
-    regexLinx="\.git[^$^i^c]|\.bash[^r^c]|terminal|cli-utils"
+    regexLinx="\.git[^$^i^c]|\.bash[^r^c]|terminal|cli-utils|.tmux*"
     for file in $( ls -a ) ; do
         if [[ $file =~ $regexLinx ]]; then
             ln -sv "$PWD/$file" "$HOME"
