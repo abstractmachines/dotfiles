@@ -1,8 +1,20 @@
-# abstractmachines' dotfiles (Mac)
+# dotfiles
+
+These are my dotfiles. Currently these dotfiles are for a Mac, zsh setup,
+but the files can easily be configured for bash instead of zsh.
+
+## Themes
+Here's a preview of a few themes:
+
+> tmux
+
+- (WIP)
+
+> Terminal, custom theme:
 
 ![Screenfetch](./img/screenfetch-dotfiles.png)
 
-## Lightning/Quick Install
+## Install
 After creating `.env` file in root dir of this repo, run `sh init.bootstrap.exclude.sh`
 and it'll symlink appropriate dotfiles to your home directory.
 
@@ -18,7 +30,7 @@ GITHUB_EMAIL="your-username@domain.com"
 - [@ajmalsiddiqui's dotfiles](https://github.com/ajmalsiddiqui/dotfiles/)
 - [Readline Cheat Sheet](https://readline.kablamo.org/emacs.html)
 
-## Installation (Detailed / For Beginners)
+## Installation (Detailed)
 1. Back up your existing dotfiles. If your dotfiles are stored in `bash_profile`
 in your home directory, make a backup copy of that file, because the scripts in
 this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Home_directory) when you run the bootstrap.sh script.
