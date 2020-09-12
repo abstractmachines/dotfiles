@@ -2,7 +2,14 @@
 
 ## 101
 
-- See [Ham Vocke's guide](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)
+- See [Ham Vocke's tmux guide](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)
+- and [part 2](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)
+
+> Source config:
+
+```
+tmux source ~/.tmux/.tmux.conf
+```
 
 > Split pane
 
