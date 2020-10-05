@@ -1,3 +1,5 @@
+ZSH_DISABLE_COMPFIX="true"
+
 . ~/.bash_profile
 
 source ~/.git-prompt.sh
