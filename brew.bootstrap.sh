@@ -33,6 +33,7 @@ brewDarwin () {
   brew install node
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
   brew install python
+  brew install redis
   brew install screenfetch
   brew install tmux
   brew install tree
