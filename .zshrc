@@ -1,5 +1,8 @@
 ZSH_DISABLE_COMPFIX="true"
 
+export GO111MODULE="on"
+export GOPATH="$HOME/go"
+
 . ~/.bash_profile
 
 source ~/.git-prompt.sh

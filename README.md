@@ -3,6 +3,8 @@
 These are my dotfiles. Currently these dotfiles are for a Mac, zsh setup,
 but the files can easily be configured for bash instead of zsh.
 
+Note the [GoLand IDE caveats for CLI](./GOLAND-IDE.md)
+
 ## Themes
 Here's a preview of a few themes:
 
