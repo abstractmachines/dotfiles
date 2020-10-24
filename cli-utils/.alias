@@ -34,6 +34,10 @@ alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota
 # (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
 # Also see resource profiles for your system.
 
+
+# ***** ***** Goland ***** *****
+alias goland='/usr/local/bin/goland'
+
 # Minikube
 alias mk="minikube"
 alias mkh="minikube -help"
