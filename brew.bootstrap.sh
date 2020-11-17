@@ -24,7 +24,10 @@ brewFresh () {
 }
 
 brewDarwin () {
-  brew install docker
+  # brew install docker # 1.
+  # brew install docker-engine # 2. (and 3. VM/hypervisor)
+  brew cask install docker # GUI Docker app
+  brew
   brew install fzf
   brew install gdb
   brew install go
