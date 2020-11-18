@@ -45,11 +45,3 @@ this repo will symlink to your [home directory](https://en.wikipedia.org/wiki/Ho
 
 5. Tell your shell to recognize the changes to your environment, by [sourcing 
 your bash profile](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line) with `source ~/.bash_profile`.
-
-# TODO list
-- [ ] aliases: use env files
-- [ ] oh my zsh
-
-Colors (next up)
-- [ ] Base16 shell https://github.com/chriskempson/base16-shell
-

@@ -22,18 +22,22 @@ alias brewsvc="brew services list"
 alias k8s="kubectl"
 alias k-conf="kubectl config"
 alias k-context="kubectl config current-context"
-alias k-context-dev="kubectl config use-context clusterboi"
+alias k-context-dev="kubectl config use-context $CLUSTER"
 
 # ~/dev/resources/resources_scripts/scripts in $PATH
 # kpods does something like:
-alias kpods-namespaceboi="kubectl get pods -o wide -L chart -L tag -n namespaceboi"
-alias kpods-deleteit="kubectl delete deploy -n namespaceboi --context clusterboi your-app"
+alias kpods-$NAMESPACE="kubectl get pods -o wide -L chart -L tag -n $NAMESPACE"
+alias kpods-deleteit="kubectl delete deploy -n $NAMESPACE --context $CLUSTER your-app"
 
 # How much headroom does a namespace haz?
-alias namespaceboi-headroom="kubectl --context clusterboi describe resourcequota -n namespaceboi"
+alias $NAMESPACE-headroom="kubectl --context $CLUSTER describe resourcequota -n $NAMESPACE"
 # (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
 # Also see resource profiles for your system.
 
+# ***** ***** gcloud cli ***** *****
+alias gcloud-auth='gcloud auth login'
+# gcloud config set project $PROJECT_ID
+# gcloud container clusters get-credentials $CLUSTER --region $REGION --project $PROJECT
 
 # ***** ***** Goland ***** *****
 alias goland='/usr/local/bin/goland'
