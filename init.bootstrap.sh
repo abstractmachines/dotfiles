@@ -130,6 +130,11 @@ nvmInstall () {
     nvmInstallFollowup
 }
 
+globalNPMs () {
+  # To use nodemon on CLI I guess you need a global install which defeats the purpose of per-project npm but whatevs
+  npm install -g nodemon
+}
+
 # mostly just to ensure scripts are fallthru but also help the user
 echoExit () {
     echo "$PROMPT Done. Remember to source rc files / start a new window to see some of these settings. ** "
@@ -141,6 +146,7 @@ symlinx
 gitCompletion
 brewInstall
 nvmInstall
+globalNPMs
 echoExit
 
 # unset init, symlinx ...
