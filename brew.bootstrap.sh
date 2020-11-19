@@ -24,11 +24,17 @@ brewFresh () {
 }
 
 brewDarwin () {
-  brew install docker
+  # brew install docker # 1.
+  # brew install docker-engine # 2. (and 3. VM/hypervisor)
+  brew cask install docker # GUI Docker app
   brew install fzf
   brew install gdb
   brew install go
+  brew cask install google-cloud-sdk # gcloud cli
   brew install htop
+  brew install kubectl
+  brew install kubectx
+  brew install kubens
   brew install mysql
   brew install node
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
