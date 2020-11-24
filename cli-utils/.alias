@@ -30,7 +30,7 @@ alias kpods-$NAMESPACE="kubectl get pods -o wide -L chart -L tag -n $NAMESPACE"
 alias kpods-deleteit="kubectl delete deploy -n $NAMESPACE --context $CLUSTER your-app"
 
 # How much headroom does a namespace haz?
-alias $NAMESPACE-headroom="kubectl --context $CLUSTER describe resourcequota -n $NAMESPACE"
+# alias $NAMESPACE_headroom="kubectl --context $CLUSTER describe resourcequota -n $NAMESPACE"
 # (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
 # Also see resource profiles for your system.
 
@@ -41,6 +41,10 @@ alias gcloud-auth='gcloud auth login'
 
 # ***** ***** Goland ***** *****
 alias goland='/usr/local/bin/goland'
+
+# ***** ***** Go ***** *****
+alias godocs='godoc --http :6060'
+alias kind-get='GO111MODULE="on" go get sigs.k8s.io/kind@v0.9.0 && kind create cluster'
 
 # Minikube
 alias mk="minikube"

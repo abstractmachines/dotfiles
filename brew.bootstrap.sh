@@ -32,9 +32,11 @@ brewDarwin () {
   brew install go
   brew cask install google-cloud-sdk # gcloud cli
   brew install htop
+  brew install kind
   brew install kubectl
   brew install kubectx
   brew install kubens
+  brew install minikube
   brew install mysql
   brew install node
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm

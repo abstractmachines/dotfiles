@@ -1,6 +1,7 @@
 source ~/cli-utils/.alias
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 export PATH="/Applications/GoLand.app/Contents/MacOS:$PATH"
+export PATH="~/go/bin:$PATH"
 
 # ***** nvm 
 # if this already exists, nvm will skip appending it on installation (see bootstrap.sh):
