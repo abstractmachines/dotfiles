@@ -142,11 +142,11 @@ echoExit () {
 
 init
 gitConf
-symlinx
-gitCompletion
 brewInstall
 nvmInstall
+gitCompletion
 globalNPMs
+symlinx
 echoExit
 
 # unset init, symlinx ...

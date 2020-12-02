@@ -36,6 +36,7 @@ brewDarwin () {
   brew install kubectl
   brew install kubectx
   brew install kubens
+  brew install kustomize
   brew install minikube
   brew install mysql
   brew install node
