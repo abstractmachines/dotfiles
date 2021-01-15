@@ -19,7 +19,8 @@ alias brewcask="brew cask list"
 alias brewsvc="brew services list"
 
 # ***** ***** Kubernetes ***** *****
-alias k8s="kubectl"
+alias k="kubectl"
+alias po="pods"
 alias k-conf="kubectl config"
 alias k-context="kubectl config current-context"
 alias k-context-dev="kubectl config use-context $CLUSTER"
