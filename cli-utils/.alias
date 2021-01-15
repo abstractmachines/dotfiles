@@ -21,12 +21,15 @@ alias brewsvc="brew services list"
 # ***** ***** Kubernetes ***** *****
 alias k="kubectl"
 alias po="pods"
-alias k-conf="kubectl config"
+alias svc="services"
+alias deploy="deployment"
+
+alias k-view="kubectl config view"
+
+## k8s context: see also kubectx binary and kubens binary.
 alias k-context="kubectl config current-context"
 alias k-context-dev="kubectl config use-context $CLUSTER"
 
-# ~/dev/resources/resources_scripts/scripts in $PATH
-# kpods does something like:
 alias kpods-$NAMESPACE="kubectl get pods -o wide -L chart -L tag -n $NAMESPACE"
 alias kpods-deleteit="kubectl delete deploy -n $NAMESPACE --context $CLUSTER your-app"
 
