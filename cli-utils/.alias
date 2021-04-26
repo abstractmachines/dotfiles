@@ -1,4 +1,7 @@
 
+alias python="python3"
+alias pip="pip3"
+
 # ***** ***** git ***** *****
 alias ga="git add"
 alias gb="git branch"
