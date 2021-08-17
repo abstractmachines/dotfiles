@@ -21,6 +21,15 @@ alias brews="brew search"
 alias brewcask="brew cask list"
 alias brewsvc="brew services list"
 
+# ***** ***** go test ***** *****
+alias gtest="go test ./..."
+alias gtestint="go test --tags=integration"
+alias gtestclean="go clean -testcache"
+
+# ***** ***** gopher ***** *****
+alias gmoney="go run"
+alias gtidy="go mod tidy"
+
 # ***** ***** Kubernetes ***** *****
 alias k="kubectl"
 alias po="pods"
