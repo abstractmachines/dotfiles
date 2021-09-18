@@ -24,6 +24,8 @@ brewFresh () {
 }
 
 brewDarwin () {
+  # Apple doesn't ship latest bash, because it's GPLv3. So:
+  brew install bash
   # brew install docker # 1.
   # brew install docker-engine # 2. (and 3. VM/hypervisor)
   brew cask install docker # GUI Docker app

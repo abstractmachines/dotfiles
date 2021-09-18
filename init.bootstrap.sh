@@ -38,7 +38,6 @@ gitConf () {
         echo "$PROMPT You need to have an .env file in this directory to proceed. Quitting."
         exit 1
     fi
-    
 }
 
 symlinx () {
