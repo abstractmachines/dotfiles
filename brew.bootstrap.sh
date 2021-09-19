@@ -20,11 +20,12 @@ brewFresh () {
   brew install coreutils
   # brew install bash
   # brew install wget
-
 }
 
 brewDarwin () {
-  # Apple doesn't ship latest bash, because it's GPLv3. So:
+  # If you run `bash --version` on your mac, you'll see it says "2007."
+  # Apple doesn't ship latest bash, because it's GPLv3; as we want a recent
+  # version of bash for our scripts, let's use brew to get a more updated bash:
   brew install bash
   # brew install docker # 1.
   # brew install docker-engine # 2. (and 3. VM/hypervisor)
@@ -51,6 +52,11 @@ brewDarwin () {
   brew install tree
 }
 
+addBrewBashToEtcShells () {
+  bashLatestGPLv3=$(which bash)
+  echo $bashLatestGPLv3 | sudo tee -a /etc/shells
+}
+
 # mongodb has been removed from homebrew core because its licensing changed:
 # https://stackoverflow.com/questions/57856809/installing-mongodb-with-homebrew
 brewMongo () {
@@ -66,6 +72,7 @@ brewUninstall () {
 brewInstall
 brewFresh
 brewDarwin
+addBrewBashToEtcShells
 
 # remove outdated versions from Cellar 
 brew cleanup
