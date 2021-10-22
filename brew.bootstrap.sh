@@ -33,6 +33,7 @@ brewDarwin () {
   brew install fzf
   brew install gdb
   brew install go
+  brew install golangci-lint
   brew cask install google-cloud-sdk # gcloud cli
   brew install helm
   brew install htop
