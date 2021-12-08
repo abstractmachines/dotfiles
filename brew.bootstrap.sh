@@ -46,11 +46,13 @@ brewDarwin () {
   brew install mysql
   brew install node
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
+  brew install postgresql@11
   brew install python
   brew install redis
   brew install screenfetch
   brew install tmux
   brew install tree
+  brew install yarn
 }
 
 addBrewBashToEtcShells () {
