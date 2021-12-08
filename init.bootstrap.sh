@@ -123,7 +123,8 @@ nvmInstall () {
         echo "$PROMPT nvm is already installed."
         # The nvm scripts do not copy nvm source scripts twice into bash profile.
     else 
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
     fi
 
     nvmInstallFollowup
@@ -142,10 +143,10 @@ echoExit () {
 init
 gitConf
 brewInstall
-nvmInstall
-gitCompletion
-globalNPMs
 symlinx
+gitCompletion
+nvmInstall
+globalNPMs
 echoExit
 
 # unset init, symlinx ...
