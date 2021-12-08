@@ -48,6 +48,11 @@ brewDarwin () {
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
   brew install postgresql@11
   brew install python
+  # python@3.7 is keg-only, which means it was not symlinked into /usr/local,
+  # because this is an alternate version of another formula.
+  # If you need to have python@3.7 first in your PATH, run:
+  # echo 'export PATH="/usr/local/opt/python@3.7/bin:$PATH"' >> ~/.zshrc
+  brew install python@3.7
   brew install redis
   brew install screenfetch
   brew install tmux

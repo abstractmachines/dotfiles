@@ -1,5 +1,5 @@
 
-alias python="python3"
+# alias python="python3" # becuz python 3.7, see brew.bootstrap.sh
 alias pip="pip3"
 
 # ***** ***** git ***** *****
