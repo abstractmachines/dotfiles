@@ -98,5 +98,14 @@ alias pgstart="pg_ctl -D /usr/local/var/postgres start"
 # stop:
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop"
 # get into db:
-alias pgdb="psql postgres"
-
+alias pg="psql -d postgres"
+# psql
+# HELP: \?
+# LIST DATABASES: \l
+# CONNECT TO DB: \c db_name
+# LIST RELATIONS: \d
+# DESCRIBE A TABLE: \d table_name
+# LIST AVAILABLE SCHEMA: \dn
+# LIST AVAILABLE FUNCTIONS: \df
+# LIST AVAILABLE VIEWS: \dv
+# COMMAND HISTORY: \s
