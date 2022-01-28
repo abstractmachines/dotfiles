@@ -17,6 +17,23 @@ tmux source ~/.tmux/.tmux.conf
 C-b %
 ```
 
+> Resize pane
+
+- 1. Bring up CLI prompt:
+  ```sh
+  C-b :
+  ```
+- Now you're in prompt, so resize the pane as follows.
+  - - D, U, L, R (down, up, left, right) direction.
+  - - Example: resize pane left by 40 more cells:
+      ```
+      resize-pane -L 40
+      ```
+  - - Example: resize pane left by 40 more cells:
+      ```
+      resize-pane -L 40
+      ```
+
 > Close pane
 
 ```
@@ -24,6 +41,7 @@ C-b x
 ```
 
 > cli: `<prefix> : <cmd>`
+
 ```
 C-b : <cmd>
 ```
@@ -35,6 +53,7 @@ tmux ls
 ```
 
 > Detach session
+
 ```
 C-b d
 ```
@@ -46,6 +65,3 @@ C-b d
 ```
 tmux kill-server
 ```
-
-
-
