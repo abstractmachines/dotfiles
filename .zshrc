@@ -18,5 +18,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # BE
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"

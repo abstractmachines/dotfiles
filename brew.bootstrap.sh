@@ -53,6 +53,7 @@ brewDarwin () {
   # If you need to have python@3.7 first in your PATH, run:
   # echo 'export PATH="/usr/local/opt/python@3.7/bin:$PATH"' >> ~/.zshrc
   brew install python@3.7 # Usage is then python3
+  brew install python@3.8
   brew install redis
   brew install screenfetch
   brew install tmux
