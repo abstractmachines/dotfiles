@@ -37,6 +37,7 @@ brewDarwin () {
   brew cask install google-cloud-sdk # gcloud cli
   brew install helm
   brew install htop
+  brew install jq
   brew install kind
   brew install kubectl
   brew install kubectx
