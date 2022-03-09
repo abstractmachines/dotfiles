@@ -64,6 +64,8 @@ brewDarwin () {
 
 addBrewBashToEtcShells () {
   bashLatestGPLv3=$(which bash)
+  # /etc/shells : list of valid login shells for system. apps consult /etc/shells.
+  # So, this will append the brew-installed latest bash to your list of valid shells:
   echo $bashLatestGPLv3 | sudo tee -a /etc/shells
 }
 
