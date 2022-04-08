@@ -11,7 +11,7 @@ but the files can easily be configured for bash instead of zsh.
 
 ## Install
 
-After creating `.env` file in root dir of this repo, run `sh init.bootstrap.exclude.sh`
+After creating `.env` file in root dir of this repo, run `sh init.bootstrap.sh`
 and it'll symlink appropriate dotfiles to your home directory.
 
 > Sample .env file:
