@@ -47,7 +47,7 @@ brewDarwin () {
   brew install mysql
   brew install node
   # brew install nvm # unsupported by homebrew. https://github.com/nvm-sh/nvm
-  brew install postgresql@11
+  brew install postgresql@12
   brew install python
   # python@3.7 is keg-only, which means it was not symlinked into /usr/local,
   # because this is an alternate version of another formula.

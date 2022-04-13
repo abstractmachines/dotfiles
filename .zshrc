@@ -20,4 +20,4 @@ export NVM_DIR="$HOME/.nvm"
 # BE
 # export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
