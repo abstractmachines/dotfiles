@@ -109,6 +109,3 @@ dist
 
 # symlinking unintended artifacts dotfiles
 .bash_profile.swp
-
-# Goland
-.idea
