@@ -64,6 +64,25 @@ alias gcloud-auth='gcloud auth login'
 # alias python="python3" # becuz python 3.7, see brew.bootstrap.sh
 alias pip="pip3"
 
+# ***** ***** GnuPG ***** *****
+alias pgp-keygen="gpg --gen-key && (gpg --export $EMAIL | base64)"
+alias gpg-list="gpg --list-keys"
+alias gpg-export="gpg --armor --export $EMAIL > ~/$YOUR_USERNAME.asc"
+# Import someone's public key using key server: 
+alias gpg-import="gpg --keyserver hkps://keys.openpgp.org --recv-keys 0x......."
+# Check fingerprint of a key:
+alias gpg-fingerprint="gpg --fingerprint $THEIR_EMAIL"
+# Verify a key using the web of trust:
+alias gpg-verify="gpg --list-signatures $THEIR_EMAIL"
+# paste, encrypt and sign message:
+alias gpg-message=" gpg --encrypt --sign --armor --output ~/Desktop/encrypted.asc --recipient $EMAIL --recipient $THEIR_EMAIL"
+# Decrypt message to stdout and decode quoted-printable characters:
+alias pgp-decrypt="gpg --decrypt ~/Desktop/encrypted.asc | perl -MMIME::QuotedPrint -0777 -nle 'print decode_qp($_)'"
+# Clear passphrase from GnuPG cache:
+alias gpg-done="gpg-connect-agent reloadagent /bye"
+
+# ***** ***** random stuff ***** *****
+
 # MySQL
 alias mysql-login="mysql --host=localhost --port=0000 --user=fakeuser --password=fake-auth"
 alias mysql-login2="mysql -u fakeuser -h mysql.domain.com -p fake-auth"
