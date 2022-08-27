@@ -5,8 +5,10 @@ export GOPATH="$HOME/go"
 
 . ~/.bash_profile
 
-# depot tools
-export PATH="$HOME/dev/depot_tools:$PATH"
+# depot tools:
+# note: you must use the absolute path or Python will not be able to find infra tools;
+# the PATH I have here hence won't work, but including it for documentation/memory
+# export PATH="$HOME/dev/depot_tools:$PATH"
 
 export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
 # GCP:
