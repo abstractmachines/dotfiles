@@ -12,9 +12,21 @@ gitConf () {
         source .env
         touch $HOME/.gitconfig
         cat .gitconfig-setup >> $HOME/.gitconfig
+
         echo "\n[user]" >> $HOME/.gitconfig
         echo "\nname = $GITHUB_USERNAME" >> $HOME/.gitconfig
         echo "\nemail = $GITHUB_EMAIL" >> $HOME/.gitconfig
+        echo "\n" >> $HOME/.gitconfig
+
+        # Cross-platform EOL for both POSIX and Windows, OSS:
+        git config --global core.autocrlf false
+        # filemode = false: ignore executable files in working tree:
+        # filemode, both global and local (avoid overrides):
+        git config --global --unset-all core.filemode
+        git config --unset-all core.filemode
+        # setup in .gitconfig:
+        git config --global core.filemode false
+
     else 
         echo "$PROMPT You need to have an .env file in this directory to proceed. Quitting."
         exit 1
