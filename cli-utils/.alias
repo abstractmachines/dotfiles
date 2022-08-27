@@ -1,7 +1,4 @@
 
-# alias python="python3" # becuz python 3.7, see brew.bootstrap.sh
-alias pip="pip3"
-
 # ***** ***** git ***** *****
 alias ga="git add"
 alias gb="git branch"
@@ -21,14 +18,22 @@ alias brews="brew search"
 alias brewcask="brew cask list"
 alias brewsvc="brew services list"
 
-# ***** ***** go test ***** *****
+# ***** ***** go ***** *****
+# gopher
+alias gtidy="go mod tidy"
+
+# Go run all files in pwd
+alias grun="go run ./..."
+# Go build executable (you'll then run binary directly...)
+alias gobuild="go build ."
+
+# Docs
+alias godocs='godoc --http :6060'
+
+# Test
 alias gtest="go test ./..."
 alias gtestint="go test --tags=integration"
 alias gtestclean="go clean -testcache"
-
-# ***** ***** gopher ***** *****
-alias gmoney="go run"
-alias gtidy="go mod tidy"
 
 # ***** ***** Kubernetes ***** *****
 alias k="kubectl"
@@ -55,12 +60,9 @@ alias gcloud-auth='gcloud auth login'
 # gcloud config set project $PROJECT_ID
 # gcloud container clusters get-credentials $CLUSTER --region $REGION --project $PROJECT
 
-# ***** ***** Goland ***** *****
-alias goland='/usr/local/bin/goland'
-
-# ***** ***** Go ***** *****
-alias godocs='godoc --http :6060'
-alias kind-get='GO111MODULE="on" go get sigs.k8s.io/kind@v0.9.0 && kind create cluster'
+# ***** ***** Python ***** *****
+# alias python="python3" # becuz python 3.7, see brew.bootstrap.sh
+alias pip="pip3"
 
 # Minikube
 alias mk="minikube"
@@ -70,16 +72,6 @@ alias mks="minikube start"
 # . $HOME/.asdf/asdf.sh
 # . $HOME/.asdf/completions/asdf.bash
 
-
-# JAVA
-# install FAQ: https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_install_faq.html#CHDJEDDB
-# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jre.html#A1096856
-# https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html
-alias jre-version="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -version"
-alias jdk-version="java -version"
-# > man javac
-# > man java_home
-# > man java
 
 # MySQL
 alias mysql-login="mysql --host=localhost --port=0000 --user=fakeuser --password=fake-auth"
