@@ -50,8 +50,8 @@ alias k-context-dev="kubectl config use-context $CLUSTER"
 alias kpods-$NAMESPACE="kubectl get pods -o wide -L chart -L tag -n $NAMESPACE"
 alias kpods-deleteit="kubectl delete deploy -n $NAMESPACE --context $CLUSTER your-app"
 
-# How much headroom does a namespace haz?
-# alias $NAMESPACE_headroom="kubectl --context $CLUSTER describe resourcequota -n $NAMESPACE"
+# See headroom in a ns
+alias k-headroom="kubectl --context $CLUSTER describe resourcequota -n $NAMESPACE"
 # (tip: You can use Grafana deployment object, or similar metrics, to see what it's actually using.)
 # Also see resource profiles for your system.
 
@@ -63,15 +63,6 @@ alias gcloud-auth='gcloud auth login'
 # ***** ***** Python ***** *****
 # alias python="python3" # becuz python 3.7, see brew.bootstrap.sh
 alias pip="pip3"
-
-# Minikube
-alias mk="minikube"
-alias mkh="minikube -help"
-alias mks="minikube start"
-# If your MiniKube has to be v0.25.1, we use asdf pkg mgr :
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
-
 
 # MySQL
 alias mysql-login="mysql --host=localhost --port=0000 --user=fakeuser --password=fake-auth"
