@@ -18,6 +18,8 @@ gitConf () {
         echo "\nemail = $GITHUB_EMAIL" >> $HOME/.gitconfig
         echo "\n" >> $HOME/.gitconfig
 
+        # ##### Chromium/V8 stuff: #####
+
         # Cross-platform EOL for both POSIX and Windows, OSS:
         git config --global core.autocrlf false
         # filemode = false: ignore executable files in working tree:
@@ -26,6 +28,13 @@ gitConf () {
         git config --unset-all core.filemode
         # setup in .gitconfig:
         git config --global core.filemode false
+
+        git config --local gerrit.host true
+
+        # Uncomment this if you want your pull commands to always rebase.
+        # git config --global branch.autosetuprebase always
+        # Uncomment if you want new branches to track the current branch.
+        # git config --global branch.autosetupmerge always
 
     else 
         echo "$PROMPT You need to have an .env file in this directory to proceed. Quitting."
