@@ -16,13 +16,14 @@ brewInstall () {
 brewFresh () {
   brew update
   brew upgrade
-  # GNU Core Utilities
-  brew install coreutils
-  # brew install bash
-  # brew install wget
+  # disable telemetry:
+  brew analytics off
 }
 
 brewDarwin () {
+  # GNU Core Utilities
+  brew install coreutils
+  # ***** Installing latest bash to avoid Apple's GPLv3 *****
   # If you run `bash --version` on your mac, you'll see it says "2007."
   # Apple doesn't ship latest bash, because it's GPLv3; as we want a recent
   # version of bash for our scripts, let's use brew to get a more updated bash:
@@ -32,6 +33,7 @@ brewDarwin () {
   brew cask install docker # GUI Docker app
   brew install fzf
   brew install gdb
+  brew install gnupg
   brew install go
   brew install golangci-lint
   brew cask install google-cloud-sdk # gcloud cli
@@ -59,6 +61,7 @@ brewDarwin () {
   brew install screenfetch
   brew install tmux
   brew install tree
+  brew install wget
   brew install yarn
 }
 
