@@ -14,6 +14,21 @@ alias npmnuke="rm -rf node_modules/ && npm i"
 # the -h makes it human readable, and -F shows / after dir and @ after executable.
 alias ls="ls -GFh"
 
+# ***** ***** libsoup (in toolbox) ***** *****
+alias libsoup-meson="meson _build --prefix=/usr"
+alias libsoup-ninja="sudo ninja -C _build install"
+alias libsoup-test="meson test -C _build"
+# Note: test w ninja?
+
+# ***** ***** WebKit *in toolbox*  ***** *****
+alias webkit-toolbox-build="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+# Note: can add 'DENABLE_UNIFIED_BUILDS=OFF` as well
+# build minibrowser
+alias webkit-toolbox-run-minibrowser="./Tools/Scripts/run-minibrowser --gtk --release"
+
+# test (in this specific case, cookies dir): 
+alias webkit-toolbox-test="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
+
 # ***** ***** homebrew ***** *****
 alias brewl="brew list"
 alias brews="brew search"
