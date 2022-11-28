@@ -21,13 +21,27 @@ alias libsoup-test="meson test -C _build"
 # Note: test w ninja?
 
 # ***** ***** WebKit *in toolbox*  ***** *****
-alias webkit-toolbox-build="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
-# Note: can add 'DENABLE_UNIFIED_BUILDS=OFF` as well
-# build minibrowser
+alias webkit-toolbox-build-release="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
+
+# *** Using Intellisense in VSCode with WebKit ***
+# WebKit's CMake files do "unified builds", grouping multiple cpp files into one to speed up compilation.
+# This is performant, but breaks smart IDEs' ability to map single cpp files to compile commands.
+# So, you have to configure the project without unified builds. This often is broken as unsupported by Apple.
+# So, after you configure the project without unified builds:
+alias webkit-toolbox-build-intellisense="./Tools/Scripts/build-webkit --gtk --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
+# ^ This will create a compile_commands json file in the build dir ./WebKitBuild/Release...
+# You can now configure C_Cpp.default.compileCommands to use this file
+# (in ./.vscode/c_cpp_properties.json, in "configurations" array, 
+# set "compileCommands": "${workspaceFolder}/WebKitBuild/Release/compile_commands.json")
+# That's how to configure VSCode to use Intellisense for the WebKit project.
+
+# Run GTK minibrowser
 alias webkit-toolbox-run-minibrowser="./Tools/Scripts/run-minibrowser --gtk --release"
 
 # test (in this specific case, cookies dir): 
-alias webkit-toolbox-test="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
+alias webkit-toolbox-test-release="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
+alias webkit-toolbox-test-debug="./Tools/Scripts/run-webkit-tests --debug 'imported/w3c/web-platform-tests/cookies'"
 
 # ***** ***** homebrew ***** *****
 alias brewl="brew list"
