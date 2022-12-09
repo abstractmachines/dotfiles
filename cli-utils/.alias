@@ -23,6 +23,7 @@ alias flat-hub-install="flatpak install flathub $FLAT_IDENTIFIER" # eg org.gimp.
 alias flat-install-dryrun="flatpak install $FLAT_APP_NAME" # will search, and confirm remote before downloading
 alias flat-run="flatpak run $FLAT_IDENTIFIER"
 alias flat-ls="flatpak list"
+alias flat-history="flatpak history"
 
 # ***** ***** libsoup (in toolbox) ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
