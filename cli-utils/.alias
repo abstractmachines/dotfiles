@@ -23,6 +23,7 @@ alias libsoup-test="meson test -C _build"
 # ***** ***** WebKit *in toolbox*  ***** *****
 alias webkit-toolbox-build-release="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
 alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
+alias webkit-toolbox-build-debug-ide="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
 
 # *** Using Intellisense in VSCode with WebKit ***
 # WebKit's CMake files do "unified builds", grouping multiple cpp files into one to speed up compilation.
