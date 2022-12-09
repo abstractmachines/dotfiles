@@ -14,6 +14,16 @@ alias npmnuke="rm -rf node_modules/ && npm i"
 # the -h makes it human readable, and -F shows / after dir and @ after executable.
 alias ls="ls -GFh"
 
+# ***** ***** flatpak ***** *****
+alias flatmote="flatpak remotes"
+alias flatmote-add="flatpak remote-add --if-not-exists $FLAT_APP_NAME $REMOTE_REPO"
+alias flatmote-rmv="flatpak remote-delete $FLAT_APP_NAME"
+alias flat-srch="flatpak search $FLAT_APP_NAME"
+alias flat-hub-install="flatpak install flathub $FLAT_IDENTIFIER" # eg org.gimp.GIMP
+alias flat-install-dryrun="flatpak install $FLAT_APP_NAME" # will search, and confirm remote before downloading
+alias flat-run="flatpak run $FLAT_IDENTIFIER"
+alias flat-ls="flatpak list"
+
 # ***** ***** libsoup (in toolbox) ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
 alias libsoup-ninja="sudo ninja -C _build install"
