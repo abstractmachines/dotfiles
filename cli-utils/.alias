@@ -24,6 +24,7 @@ alias flat-install-dryrun="flatpak install $FLAT_APP_NAME" # will search, and co
 alias flat-run="flatpak run $FLAT_IDENTIFIER"
 alias flat-ls="flatpak list"
 alias flat-history="flatpak history"
+alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 
 # ***** ***** libsoup (in toolbox) ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
