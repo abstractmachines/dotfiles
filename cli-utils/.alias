@@ -35,15 +35,14 @@ alias libsoup-test="meson test -C _build"
 # ***** ***** WebKit gtk builds ***** *****
 alias webkit-toolbox-build-gtk="./Tools/Scripts/build-webkit --gtk"
 # the toolbox / SDK has a current bug requiring denabling of thunder (for now). As such:
-alias webkit-toolbox-build-toolbox="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
-alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
+alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
 
 # *** Using Intellisense in VSCode with WebKit ***
 # WebKit's CMake files do "unified builds", grouping multiple cpp files into one to speed up compilation.
 # This is performant, but breaks smart IDEs' ability to map single cpp files to compile commands.
 # So, you have to configure the project without unified builds. This often is broken as unsupported by Apple.
 # So, after you configure the project without unified builds:
-alias webkit-toolbox-build-intellisense="./Tools/Scripts/build-webkit --gtk --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
+alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
 # ^ This will create a compile_commands json file in the build dir ./WebKitBuild/Release...
 # You can now configure C_Cpp.default.compileCommands to use this file
 # (in ./.vscode/c_cpp_properties.json, in "configurations" array, 
