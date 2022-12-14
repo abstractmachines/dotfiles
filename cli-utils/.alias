@@ -26,21 +26,35 @@ alias flat-ls="flatpak list"
 alias flat-history="flatpak history"
 alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 
-# ***** ***** libsoup (in toolbox) ***** *****
+# ***** ***** libsoup ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
 alias libsoup-ninja="sudo ninja -C _build install"
 alias libsoup-test="meson test -C _build"
-# Note: test w ninja?
 
-# ***** ***** WebKit gtk builds ***** *****
+# ***** ***** WebKit ***** *****
 alias webkit-toolbox-build-gtk="./Tools/Scripts/build-webkit --gtk"
 # the toolbox / SDK has a current bug requiring denabling of thunder (for now). As such:
 alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
 
-# *** Using Intellisense in VSCode with WebKit ***
+# ***** WebKit Flatpak SDK *****
+# Mappings are as such. For flags: --release --gtk:
+# - Host Path is ./WebKitBuild/GTK/Release
+# - Sandbox Path is ./WebKitBuild/Release
+
+# * Use Case: run gdb:
+# Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c /path/to/executable ...
+alias webkit-flatpak-gdb="./Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c ./WebKitBuild/Release"
+
+# * Use Case: run commands inside sandbox:
+# Tools/Scripts/webkit-flatpak --wpe --release -c $COMMAND
+
+# * Use Case: drop into a shell inside the sandbox:
+# Tools/Scripts/webkit-flatpak --wpe --release -c bash
+
+# WebKit Intellisense / Deunified Builds
 # WebKit's CMake files do "unified builds", grouping multiple cpp files into one to speed up compilation.
 # This is performant, but breaks smart IDEs' ability to map single cpp files to compile commands.
-# So, you have to configure the project without unified builds. This often is broken as unsupported by Apple.
+# So, you have to configure the project without unified builds. This often is broken (unsupported by Apple).
 # So, after you configure the project without unified builds:
 alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
 # ^ This will create a compile_commands json file in the build dir ./WebKitBuild/Release...
