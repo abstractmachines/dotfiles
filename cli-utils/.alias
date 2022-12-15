@@ -37,6 +37,10 @@ alias webkit-toolbox-build-gtk="./Tools/Scripts/build-webkit --gtk"
 alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
 
 # ***** WebKit Flatpak SDK *****
+# Setup Flatpak SDK for WebKit:
+alias webkit-setup-flatpak="./Tools/Scripts/update-webkit-flatpak"
+# This will fetch Flatpak SDK and place it in ./WebKitBuild/UserFlatpak.
+
 # Mappings are as such. For flags: --release --gtk:
 # - Host Path is ./WebKitBuild/GTK/Release
 # - Sandbox Path is ./WebKitBuild/Release
