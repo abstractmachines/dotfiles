@@ -45,9 +45,32 @@ alias webkit-setup-flatpak="./Tools/Scripts/update-webkit-flatpak"
 # - Host Path is ./WebKitBuild/GTK/Release
 # - Sandbox Path is ./WebKitBuild/Release
 
+# * Use Case: run gdb with Flatpak SDK (Trac docs) with gdbserver:
+# Terminal 1: Run minibrowser on port 9090, setting env variable to gdbserver:
+alias webkit-gdbserver="WEB_PROCESS_CMD_PREFIX='/usr/bin/gdbserver --no-startup-with-shell localhost:9090' Tools/Scripts/run-minibrowser --gtk --release"
+# Terminal 2:  Run gdb inside the sandbox:
+# 1. Get into the sandbox
+alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKitBuild/Release/bin/WebKitWebProcess"
+# 2. Run gdb, in the sandbox
+# > gdb
+# 3. Target the correct port, running gdbserver:
+# > target remote localhost:9090
+# 4. Debug normally, like how a "human" would do.
+
+# * Use Case: run gdb with Flatpak SDK (Trac docs):
+# Terminal 1:
+# ./Tools/Scripts/run-minibrowser --gtk --release $URL
+# Terminal 2:
+# > flatpak ps
+# get into the container:
+# > sudo flatpak enter $FLATPAKPID /bin/bash
+# Attach gdb to existing process:
+# > gdb attach $(/bin/pidof /app/webkit/WebKitBuild/Release/bin/WebKitWebProcess)
+# NOTE: Attach to gdbserver inside the container so that target and debugger are in same PID ns.
+
 # * Use Case: run gdb:
 # Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c /path/to/executable ...
-alias webkit-flatpak-gdb="./Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c ./WebKitBuild/Release"
+#./Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c ./WebKitBuild/Release
 
 # * Use Case: run commands inside sandbox:
 # Tools/Scripts/webkit-flatpak --wpe --release -c $COMMAND
