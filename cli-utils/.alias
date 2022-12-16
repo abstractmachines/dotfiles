@@ -46,9 +46,10 @@ alias webkit-setup-flatpak="./Tools/Scripts/update-webkit-flatpak"
 # - Sandbox Path is ./WebKitBuild/Release
 
 # * Use Case: run gdb with Flatpak SDK (Trac docs) with gdbserver:
-# Terminal 1: Run minibrowser on port 9090, setting env variable to gdbserver:
+# Terminal 1: Run gdbserver on the target system, e.g. target> gdbserver comm program [ args … ]
+# Target system is minibrowser; we'll use tcp
 alias webkit-gdbserver="WEB_PROCESS_CMD_PREFIX='/usr/bin/gdbserver --no-startup-with-shell localhost:9090' Tools/Scripts/run-minibrowser --gtk --release"
-# Terminal 2:  Run gdb inside the sandbox:
+# Terminal 2:  Connect gdb to remote target inside flatpak sdk sandbox
 # 1. Get into the sandbox
 alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKitBuild/Release/bin/WebKitWebProcess"
 # 2. Run gdb, in the sandbox
