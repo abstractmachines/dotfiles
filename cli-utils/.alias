@@ -94,6 +94,23 @@ alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug
 # Run GTK minibrowser
 alias webkit-toolbox-run-minibrowser="./Tools/Scripts/run-minibrowser --gtk --release"
 
+# *** variables / cmake:
+# variables/optargs passed into cmake args all begin with -D. So if you use --cmakeargs='-DEVELOPER_MODE', it's actually EVELOPER MODE.
+alias webkit-build-devmode="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF -DDEVELOPER_MODE=ON'"
+# The above switches dev mode to on. Strangely, one can also `--enable-developer-extras=true` during runtime...
+# supposedly all GTK builds have developer mode on.... but yeah.
+
+# Looking at env vars/settings/flags: OptionsGTK.cmake ... WebPreferences[Debug].yaml ... webkitdirs.pm ...
+alias webkit-args=`export BUILD_WEBKIT_ARGS="-DDEVELOPER_MODE=ON --cmakeargs=-DENABLE_THUNDER=OFF"`
+
+# Minibrowser Web Inspector Remote
+    # set the environment variable WEBKIT_INSPECTOR_SERVER=ip:port before running jsc or a browser/launcher powered by WPE or WebKitGTK+
+    # enable the WebKitSettings enable-developer-extras 
+# export WEBKIT_INSPECTOR_HTTP=127.0.0.1:9222 // or WEB_INSPECTOR_SERVER instead
+# ./Tools/Scripts/run-minibrowser --gtk --enable-developer-extras=true
+# Then open another browser:
+# ./Tools/Scripts/run-minibrowser --gtk inspector://127.0.0.1:9222
+
 # test (in this specific case, cookies dir): 
 alias webkit-toolbox-test-release="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
 alias webkit-toolbox-test-debug="./Tools/Scripts/run-webkit-tests --debug 'imported/w3c/web-platform-tests/cookies'"
