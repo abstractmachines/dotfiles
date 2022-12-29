@@ -106,10 +106,15 @@ alias webkit-args=`export BUILD_WEBKIT_ARGS="-DDEVELOPER_MODE=ON --cmakeargs=-DE
 # Minibrowser Web Inspector Remote
     # set the environment variable WEBKIT_INSPECTOR_SERVER=ip:port before running jsc or a browser/launcher powered by WPE or WebKitGTK+
     # enable the WebKitSettings enable-developer-extras 
-# export WEBKIT_INSPECTOR_HTTP=127.0.0.1:9222 // or WEB_INSPECTOR_SERVER instead
-# ./Tools/Scripts/run-minibrowser --gtk --enable-developer-extras=true
-# Then open another browser:
-# ./Tools/Scripts/run-minibrowser --gtk inspector://127.0.0.1:9222
+# export WEBKIT_INSPECTOR_HTTP_SERVER=127.0.0.1:1234
+# export WEBKIT_INSPECTOR_SERVER=127.0.0.1:1234
+# ./Tools/Scripts/run-minibrowser --gtk
+# Then open another terminal to open another browser:
+#  export WEBKIT_INSPECTOR_HTTP_SERVER=127.0.0.1:1234
+# ./Tools/Scripts/run-minibrowser --gtk
+# navigate to http://localhost:1234
+# other opt args can include:
+# ./Tools/Scripts/run-minibrowser --gtk --enable-developer-extras=true inspector://127.0.0.1:1234
 
 # test (in this specific case, cookies dir): 
 alias webkit-toolbox-test-release="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
