@@ -26,6 +26,10 @@ alias flat-ls="flatpak list"
 alias flat-history="flatpak history"
 alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 
+# ***** ***** dnf ***** *****
+# repoquery --whatprovides a package:
+# sudo dnf repoquery --whatprovides "pkgconfig(libsystemd)"
+
 # ***** ***** libsoup ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
 alias libsoup-ninja="sudo ninja -C _build install"
