@@ -1,5 +1,10 @@
 source ~/cli-utils/.alias
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+# GNOME, jhbuild:
+export PATH="~/.local/bin:$PATH"
+
+# Golang:
 #export PATH="~/go/bin:$PATH"
 
 # ***** nvm 
