@@ -4,6 +4,9 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 # GNOME, jhbuild:
 export PATH="~/.local/bin:$PATH"
 
+# Rust, Cargo package manager:
+export PATH="~/.cargo/bin:$PATH"
+
 # Golang:
 #export PATH="~/go/bin:$PATH"
 
