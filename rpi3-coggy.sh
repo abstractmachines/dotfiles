@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# scp -O ./rpi3-coggy.sh root@$RPI_IP:rpi3-coggy.sh
+
+# sh rpi3-coggy.sh
+
 echo Enter RPI IP: 
 read $ip
 export RPI_IP=$ip # rpi
