@@ -7,6 +7,7 @@ alias gco="git checkout"
 alias gd="git diff"
 alias gl="git log"
 alias gs="git status"
+alias gclean="git clean -fd"
 alias gstash="git stash"
 alias gstashu="git stash --include-untracked"
 alias npmnuke="rm -rf node_modules/ && npm i"
@@ -36,13 +37,21 @@ alias libsoup-ninja="sudo ninja -C _build install"
 alias libsoup-test="meson test -C _build"
 
 # ***** ***** WebKit ***** *****
-alias webkit-toolbox-build-gtk="./Tools/Scripts/build-webkit --gtk"
-# the toolbox / SDK has a current bug requiring denabling of thunder (for now). As such:
-alias webkit-toolbox-build-debug="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF'"
+alias webkitgtk-libs="update-webkitgtk-libs"
+alias webkitgtk-deps="./Tools/gtk/install-dependencies"
+alias webkitgtk-build="build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+# get into container
+alias webkit-container="webkit-flatpak --gtk -c bash"
+# test
+alias webkitgtk-test="run-webkit-tests --release --gtk $testName"
+# lint
+alias webkit-style="check-webkit-style"
+# patch
+alias webkit-patch="webkit-patch --all-commands"
 
 # ***** WebKit Flatpak SDK *****
 # Setup Flatpak SDK for WebKit:
-alias webkit-setup-flatpak="./Tools/Scripts/update-webkit-flatpak"
+alias webkit-setup-flatpak="update-webkit-flatpak"
 # This will fetch Flatpak SDK and place it in ./WebKitBuild/UserFlatpak.
 
 # Mappings are as such. For flags: --release --gtk:
@@ -55,7 +64,7 @@ alias webkit-setup-flatpak="./Tools/Scripts/update-webkit-flatpak"
 alias webkit-gdbserver="WEB_PROCESS_CMD_PREFIX='/usr/bin/gdbserver --no-startup-with-shell localhost:9090' Tools/Scripts/run-minibrowser --gtk --release"
 # Terminal 2:  Connect gdb to remote target inside flatpak sdk sandbox
 # 1. Get into the sandbox
-alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKitBuild/Release/bin/WebKitWebProcess"
+alias webkit-sandbox="webkit-flatpak --release /app/webkit/WebKitBuild/Release/bin/WebKitWebProcess"
 # 2. Run gdb, in the sandbox
 # > gdb
 # 3. Target the correct port, running gdbserver:
@@ -64,7 +73,7 @@ alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKi
 
 # * Use Case: run gdb with Flatpak SDK (Trac docs):
 # Terminal 1:
-# ./Tools/Scripts/run-minibrowser --gtk --release $URL
+# > run-minibrowser --gtk --release $URL
 # Terminal 2:
 # > flatpak ps
 # get into the container:
@@ -74,8 +83,8 @@ alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKi
 # NOTE: Attach to gdbserver inside the container so that target and debugger are in same PID ns.
 
 # * Use Case: run gdb:
-# Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c /path/to/executable ...
-#./Tools/Scripts/webkit-flatpak --gtk --release -c gdb -c ./WebKitBuild/Release
+# > webkit-flatpak --gtk --release -c gdb -c /path/to/executable ...
+# > webkit-flatpak --gtk --release -c gdb -c ./WebKitBuild/Release
 
 # * Use Case: run commands inside sandbox:
 # Tools/Scripts/webkit-flatpak --wpe --release -c $COMMAND
@@ -88,7 +97,7 @@ alias webkit-sandbox="./Tools/Scripts/webkit-flatpak --release /app/webkit/WebKi
 # This is performant, but breaks smart IDEs' ability to map single cpp files to compile commands.
 # So, you have to configure the project without unified builds. This often is broken (unsupported by Apple).
 # So, after you configure the project without unified builds:
-alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
+alias webkit-toolbox-build-deunified="build-webkit --gtk --debug --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_UNIFIED_BUILDS=OFF'"
 # ^ This will create a compile_commands json file in the build dir ./WebKitBuild/Release...
 # You can now configure C_Cpp.default.compileCommands to use this file
 # (in ./.vscode/c_cpp_properties.json, in "configurations" array, 
@@ -96,11 +105,11 @@ alias webkit-toolbox-build-deunified="./Tools/Scripts/build-webkit --gtk --debug
 # That's how to configure VSCode to use Intellisense for the WebKit project.
 
 # Run GTK minibrowser
-alias webkit-toolbox-run-minibrowser="./Tools/Scripts/run-minibrowser --gtk --release"
+alias webkitgtk-minibrowser="run-minibrowser --gtk --release"
 
 # *** variables / cmake:
 # variables/optargs passed into cmake args all begin with -D. So if you use --cmakeargs='-DEVELOPER_MODE', it's actually EVELOPER MODE.
-alias webkit-build-devmode="./Tools/Scripts/build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF -DDEVELOPER_MODE=ON'"
+alias webkit-build-devmode="build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF -DDEVELOPER_MODE=ON'"
 # The above switches dev mode to on. Strangely, one can also `--enable-developer-extras=true` during runtime...
 # supposedly all GTK builds have developer mode on.... but yeah.
 
@@ -112,20 +121,17 @@ alias webkit-args=`export BUILD_WEBKIT_ARGS="-DDEVELOPER_MODE=ON --cmakeargs=-DE
     # enable the WebKitSettings enable-developer-extras
 # export WEBKIT_INSPECTOR_HTTP_SERVER=127.0.0.1:1234
 # export WEBKIT_INSPECTOR_SERVER=127.0.0.1:1234
-# ./Tools/Scripts/run-minibrowser --gtk
+# run-minibrowser --gtk
 # Then open another terminal to open another browser:
 #  export WEBKIT_INSPECTOR_HTTP_SERVER=127.0.0.1:1234
-# ./Tools/Scripts/run-minibrowser --gtk
+#  run-minibrowser --gtk
 # navigate to http://localhost:1234
 # other opt args can include:
-# ./Tools/Scripts/run-minibrowser --gtk --enable-developer-extras=true inspector://127.0.0.1:1234
+#  run-minibrowser --gtk --enable-developer-extras=true inspector://127.0.0.1:1234
 
 # Remote Web Inspector for WPE with rpi
 # export WEBKIT_INSPECTOR_HTTP_SERVER="IP_address_of_your_RPi:9224" -> use on laptop
 
-# test (in this specific case, cookies dir): 
-alias webkit-toolbox-test-release="./Tools/Scripts/run-webkit-tests --release 'imported/w3c/web-platform-tests/cookies'"
-alias webkit-toolbox-test-debug="./Tools/Scripts/run-webkit-tests --debug 'imported/w3c/web-platform-tests/cookies'"
 
 # ***** ***** homebrew ***** *****
 alias brewl="brew list"
