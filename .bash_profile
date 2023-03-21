@@ -2,6 +2,9 @@ source ~/cli-utils/.alias
 
 export PATH="~/.local/bin:$PATH" # GNOME, JHBuild
 export PATH="~/dev/WebKit/Tools/Scripts:$PATH" # WebKit
+export PATH="~/dev/wk-gardening-tools/src:$PATH" # WebKit Gardening tools
+# wk-test-lookup $testName
+# wk-test-baselines $testName
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 export PATH="~/.cargo/bin:$PATH" # Rust, Cargo package manager
 
