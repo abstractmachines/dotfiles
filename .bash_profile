@@ -1,11 +1,9 @@
 source ~/cli-utils/.alias
+
+export PATH="~/.local/bin:$PATH" # GNOME, JHBuild
+export PATH="~/dev/WebKit/Tools/Scripts:$PATH" # WebKit
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-
-# GNOME, jhbuild:
-export PATH="~/.local/bin:$PATH"
-
-# Rust, Cargo package manager:
-export PATH="~/.cargo/bin:$PATH"
+export PATH="~/.cargo/bin:$PATH" # Rust, Cargo package manager
 
 # Golang:
 #export PATH="~/go/bin:$PATH"
