@@ -38,9 +38,15 @@ alias libsoup-ninja="sudo ninja -C _build install"
 alias libsoup-test="meson test -C _build"
 
 # ***** ***** WebKit ***** *****
+# GTK
 alias webkitgtk-libs="update-webkitgtk-libs"
 alias webkitgtk-deps="./Tools/gtk/install-dependencies"
 alias webkitgtk-build="build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+# WPE
+alias webkitwpe-libs="update-webkitwpe-libs"
+alias webkitwpe-deps="./Tools/wpe/install-dependencies"
+alias webkitwpe-build="build-webkit --wpe --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+
 # get into container
 alias webkit-container="webkit-flatpak --gtk -c bash"
 # test
