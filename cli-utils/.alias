@@ -40,12 +40,12 @@ alias libsoup-test="meson test -C _build"
 
 # ***** ***** WebKit ***** *****
 # GTK
-alias webkitgtk-libs="update-webkitgtk-libs"
 alias webkitgtk-deps="./Tools/gtk/install-dependencies"
+alias webkitgtk-libs="update-webkitgtk-libs"
 alias webkitgtk-build="build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
 # WPE
-alias webkitwpe-libs="update-webkitwpe-libs"
 alias webkitwpe-deps="./Tools/wpe/install-dependencies"
+alias webkitwpe-libs="update-webkitwpe-libs"
 alias webkitwpe-build="build-webkit --wpe --release --cmakeargs='-DENABLE_THUNDER=OFF'"
 
 # get into container
