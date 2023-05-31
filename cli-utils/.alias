@@ -14,6 +14,8 @@ alias gstashu="git stash --include-untracked"
 # The -G option is equivalent to defining CLICOLOR in the environment.
 # the -h makes it human readable, and -F shows / after dir and @ after executable.
 alias ls="ls -GFh"
+# git grep:
+alias gls="git log --grep=$GIT_SEARCH"
 
 # ***** ***** flatpak ***** *****
 alias flatmote="flatpak remotes"
