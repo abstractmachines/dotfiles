@@ -37,6 +37,7 @@ alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 # /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestLoaderClient
 # /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestWebProcessExtensions
 alias wpetest-api="run-wpe-tests --release $WPE_TEST_PATH"
+alias wpetest-api-bots="python3 Tools/Scripts/run-wpe-tests --release"
 
 # ***** ***** libsoup ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
