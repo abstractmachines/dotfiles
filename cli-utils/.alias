@@ -33,6 +33,11 @@ alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 # repoquery --whatprovides a package:
 # sudo dnf repoquery --whatprovides "pkgconfig(libsystemd)"
 
+# ***** ***** WPE API Tests ***** *****
+# /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestLoaderClient
+# /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestWebProcessExtensions
+alias wpetest-api="run-wpe-tests --release $WPE_TEST_PATH"
+
 # ***** ***** libsoup ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
 alias libsoup-ninja="sudo ninja -C _build install"
