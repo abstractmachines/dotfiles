@@ -6,6 +6,12 @@ export PATH="~/dev/wk-gardening-tools/src:$PATH" # WebKit Gardening tools
 # wk-test-lookup $testName // finds expectation failures. defaults to --gtk, try --wpe
 # wk-test-baselines $testName
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+# wkdev-sdk integration
+pushd /home/afalke/dev/wkdev-sdk &>/dev/null
+source ./register-sdk-on-host.sh
+popd &>/dev/null
+
 export PATH="~/.cargo/bin:$PATH" # Rust, Cargo package manager
 
 # Golang:
