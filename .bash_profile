@@ -8,9 +8,9 @@ export PATH="~/dev/wk-gardening-tools/src:$PATH" # WebKit Gardening tools
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 # wkdev-sdk integration
-pushd /home/afalke/dev/wkdev-sdk &>/dev/null
-source ./register-sdk-on-host.sh
-popd &>/dev/null
+# pushd /home/afalke/dev/wkdev-sdk &>/dev/null
+# source ./register-sdk-on-host.sh
+# popd &>/dev/null
 
 export PATH="~/.cargo/bin:$PATH" # Rust, Cargo package manager
 
