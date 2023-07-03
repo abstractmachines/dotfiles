@@ -33,29 +33,35 @@ alias flat-build="flatpak-builder $BUILD_DIR $MANIFEST_FILE"
 # repoquery --whatprovides a package:
 # sudo dnf repoquery --whatprovides "pkgconfig(libsystemd)"
 
-# ***** ***** WPE API Tests ***** *****
-# /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestLoaderClient
-# /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestWebProcessExtensions
-alias wpetest-api="run-wpe-tests --release $WPE_TEST_PATH"
-alias wpetest-api-bots="python3 Tools/Scripts/run-wpe-tests --release"
-
 # ***** ***** libsoup ***** *****
 alias libsoup-meson="meson _build --prefix=/usr"
 alias libsoup-ninja="sudo ninja -C _build install"
 alias libsoup-test="meson test -C _build"
 
-# ***** ***** WebKit ***** *****
+# ***** ***** WebKit w Flatpak ***** *****
+# Setup Flatpak SDK for WebKit:
+alias webkit-setup-flatpak="update-webkit-flatpak"
+# This will fetch Flatpak SDK and place it in ./WebKitBuild/UserFlatpak.
+
 # GTK
 alias webkitgtk-deps="./Tools/gtk/install-dependencies"
 alias webkitgtk-libs="update-webkitgtk-libs"
 alias webkitgtk-build="build-webkit --gtk --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+
 # WPE
 alias webkitwpe-deps="./Tools/wpe/install-dependencies"
 alias webkitwpe-libs="update-webkitwpe-libs"
 alias webkitwpe-build="build-webkit --wpe --release --cmakeargs='-DENABLE_THUNDER=OFF'"
+alias wpe-api-tests="run-wpe-tests /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestResources"
 
-# get into container
-alias webkit-container="webkit-flatpak --gtk -c bash"
+# ***** WebKit ***** : Logging 
+# export OS_ACTIVITY_MODE=info // info | debug | warn | off
+# export WEBKIT_DEBUG="Network" // see Log Channels in Platform/Logging.h
+# export CXXFLAGS="-DLOG_DISABLED=0"
+alias wpe-logs="build-webkit  --wpe --release --cmakeargs='-DENABLE_THUNDER=OFF -DENABLE_JOURNALD_LOG=ON'"
+# run-wpe-tests /app/webkit/Tools/glib/../../WebKitBuild/Release/bin/TestWebKitAPI/WPE/TestResources
+# run-minibrowser ...
+
 # test
 alias webkitgtk-test="run-webkit-tests --release --gtk $testName"
 # lint
@@ -64,9 +70,10 @@ alias webkit-style="check-webkit-style"
 alias webkit-patch="webkit-patch --all-commands"
 
 # ***** WebKit Flatpak SDK *****
-# Setup Flatpak SDK for WebKit:
-alias webkit-setup-flatpak="update-webkit-flatpak"
-# This will fetch Flatpak SDK and place it in ./WebKitBuild/UserFlatpak.
+# Flatpak, enter container
+alias webkit-container="webkit-flatpak --gtk -c bash"
+
+# Flatpak SDK for WebKit: update-webkit-flatpak builds ./WebKitBuild/UserFlatpak.
 
 # Mappings are as such. For flags: --release --gtk:
 # - Host Path is ./WebKitBuild/GTK/Release
